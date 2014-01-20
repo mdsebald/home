@@ -1,0 +1,66 @@
+set nocompatible
+syntax on
+filetype on
+filetype indent on
+filetype plugin on
+set nu
+set ruler
+hi LineNr term=NONE
+set autoindent
+set autowrite
+set tabstop=4
+set shiftwidth=4
+set shiftround
+set expandtab
+set backup
+set backupcopy=yes
+set nohls
+set noincsearch
+set nocindent
+set backupdir=$HOME/tmp//,$TEMP//,/tmp//,.//
+set dir=$HOME/tmp//,$TEMP//,/tmp//,.//
+set viminfo='1000,f1,\"500,:1000,rA:,rB:,rD:,h
+set wildmenu
+set laststatus=2
+set showcmd
+set formatoptions=cqro
+
+" dvorak
+map l s
+map s l
+map n k
+map k n
+map t j
+map j t
+map <C-W>j <C-W>t
+map <C-W>t <C-W>j
+map <C-W>k <C-W>n
+map <C-W>n <C-W>k
+map gj gt
+map gt gj
+map gk gn
+map gn gk
+set noremap
+set diffopt=filler,vertical
+
+runtime set_utf8.vim
+
+autocmd FileType conf set tabstop=8
+autocmd FileType conf set shiftwidth=8
+autocmd FileType conf set noexpandtab
+
+autocmd FileType ruby set expandtab
+autocmd FileType ruby set shiftwidth=2
+autocmd FileType ruby set tabstop=2
+
+autocmd FileType python set expandtab
+autocmd FileType python set shiftwidth=2
+autocmd FileType python set tabstop=2
+
+autocmd FileType html set expandtab
+autocmd FileType html set shiftwidth=2
+autocmd FileType html set tabstop=2
+
+autocmd FileType xml set expandtab
+autocmd FileType xml set shiftwidth=2
+autocmd FileType xml set tabstop=2
