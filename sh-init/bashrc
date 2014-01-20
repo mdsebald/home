@@ -1,0 +1,23 @@
+if [[ -d $HOME/tmp ]]
+then
+  export TEMP=$HOME/tmp
+  export TMP=$HOME/tmp
+fi
+
+if [[ $- == *i* ]]
+then
+  # interactive
+  export PS1='$PWD $ '
+  export HISTFILE=$HOME/.sh_history
+  export EDITOR=vim
+
+  set -o emacs
+
+  eval $(keychain --eval --agents ssh id_rsa)
+
+  if [[ -f $HOME/.aliases ]]
+  then
+      source $HOME/.aliases
+  fi
+fi
+

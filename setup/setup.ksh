@@ -43,3 +43,22 @@ then
 fi
 
 ln -vs "$dotfiles/vim" "$HOME/.vim"
+
+# TODO: if FreeBSD / other OS
+for sh_init in shrc bashrc kshrc cshrc profile
+do
+  dotfile="$HOME/.$sh_init"
+  dotfilebak="$HOME/${sh_init}-bak"
+  if [[ -f $dotfile ]]
+  then
+    pmsg "$dotfile exists, moving to $dotfilebak"
+    mv -vf "$dotfile" "$dotfilebak"
+  fi
+  ln -v "$dotfiles/sh-init/$sh_init" "$dotfile"
+done
+
+# TODO: if FreeBSD
+ln -v "$dotfiles/sh-init/csh-login" "$HOME/.login"
+
+# Fin
+touch "$HOME/.dotfiles-ready"
