@@ -1,8 +1,16 @@
+execute pathogen#infect()
+
 set nocompatible
 syntax on
+
+colorscheme solarized
+
 filetype on
 filetype indent on
 filetype plugin on
+
+set clipboard=unnamedplus
+
 set nu
 set ruler
 hi LineNr term=NONE

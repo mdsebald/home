@@ -1,0 +1,6 @@
+set guifont=Source\ Code\ Pro\ 12
+set guioptions=ar
+set guiheadroom=0
+
+" set background=dark
+colorscheme solarized
