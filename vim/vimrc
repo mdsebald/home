@@ -61,6 +61,14 @@ autocmd FileType ruby set expandtab
 autocmd FileType ruby set shiftwidth=2
 autocmd FileType ruby set tabstop=2
 
+autocmd FileType sh set expandtab
+autocmd FileType sh set shiftwidth=2
+autocmd FileType sh set tabstop=2
+
+autocmd FileType ksh set expandtab
+autocmd FileType ksh set shiftwidth=2
+autocmd FileType ksh set tabstop=2
+
 autocmd FileType python set expandtab
 autocmd FileType python set shiftwidth=2
 autocmd FileType python set tabstop=2
