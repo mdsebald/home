@@ -4,6 +4,7 @@ set nocompatible
 syntax on
 
 colorscheme solarized
+set background=dark
 
 filetype on
 filetype indent on
