@@ -43,6 +43,7 @@ then
 fi
 
 ln -vs "$dotfiles/vim" "$HOME/.vim"
+ln -vs "$dotfiles/tmux/tmux.conf" "$HOME/.tmux.conf"
 
 # TODO: if FreeBSD / other OS
 for sh_init in shrc bashrc kshrc cshrc profile
