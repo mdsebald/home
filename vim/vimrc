@@ -70,6 +70,10 @@ autocmd FileType ksh set expandtab
 autocmd FileType ksh set shiftwidth=2
 autocmd FileType ksh set tabstop=2
 
+autocmd FileType perl set expandtab
+autocmd FileType perl set shiftwidth=4
+autocmd FileType perl set tabstop=4
+
 autocmd FileType python set expandtab
 autocmd FileType python set shiftwidth=4
 autocmd FileType python set tabstop=4
