@@ -10,7 +10,7 @@ mkdir -p $logdir
 
 xkbcomp_bin=/usr/bin/xkbcomp
 xkbcomp_cfg=/home/lbakken/.xkb
-[ -x $xkbcomp_bin ] && [ -f $xkbcomp_cfg ] && $xkbcomp_bin $xkbcomp_cfg >> $logfile 2>&1
+[ -x $xkbcomp_bin ] && [ -f $xkbcomp_cfg ] && $xkbcomp_bin $xkbcomp_cfg :0 >> $logfile 2>&1
 
 alsactl_bin=/usr/bin/alsactl
 alsactl_cfg=/home/lbakken/.config/asound.state
