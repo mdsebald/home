@@ -1,0 +1,34 @@
+alias lynx='lynx -nopause'
+alias ll='ls -la'
+alias xc='xclip -selection clipboard'
+alias hp='hcutil paste --room=935211'
+alias et='erltags --ignore _rel'
+
+function plzreview {
+    local -i ticket=$1
+    hcutil paste --room=935211 "(ceilingcat) Could I get a review on #$ticket above? Thanks! (ceilingcat)" -t $ticket
+}
+
+function start {
+    if [[ -n $DISPLAY ]]
+    then
+        local item="$1"
+        if [[ $item == '.' ]]
+        then
+            item="$PWD"
+        fi
+        local item_subst="$(echo $item | sed -e's/^\///' -e's/\//-/g')"
+        if [[ -x /usr/bin/pcmanfm-qt ]]
+        then
+            /usr/bin/pcmanfm-qt "$item" > "/tmp/start_${item_subst}.log" 2>&1
+        elif [[ -x /usr/bin/dolphin ]]
+        then
+            /usr/bin/dolphin "$item" > "/tmp/start_${item_subst}.log" 2>&1
+        fi
+    fi
+}
+
+function ff {
+    find . \( -type d \( -name dev -o -name git \) -prune \) -o \( -type f -exec fgrep "$@" {} + \)
+}
+

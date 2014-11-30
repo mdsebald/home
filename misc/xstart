@@ -16,3 +16,12 @@ alsactl_bin=/usr/bin/alsactl
 alsactl_cfg=/home/lbakken/.config/asound.state
 [ -x $alsactl_bin ] && [ -f $alsactl_cfg ] && $alsactl_bin --file $alsactl_cfg restore >> $logfile 2>&1
 
+syndaemon_bin=/usr/bin/syndaemon
+[ -x $syndaemon_bin ] && $syndaemon_bin -t -k -i 2 >> $logfile 2>&1 &
+
+xrandr_bin=/usr/bin/xrandr
+[ -x $xrandr_bin ] && $xrandr_bin --dpi 96 >> $logfile 2>&1 &
+
+xscreensaver_bin=/usr/bin/xscreensaver
+[ -x $xscreensaver_bin ] && $xscreensaver_bin -nosplash >> $logfile 2>&1 &
+
