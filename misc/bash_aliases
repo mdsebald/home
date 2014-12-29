@@ -3,6 +3,29 @@ alias ll='ls -la'
 alias xc='xclip -selection clipboard'
 alias hp='hcutil paste --room=935211'
 alias et='erltags --ignore _rel'
+alias gpr='git pull --rebase'
+
+function mv-imgs {
+    local -i cnt=1
+    for img in IMG_*
+    do
+        fmt="$(printf '%.2d\n' $cnt)"
+        imgnew="${fmt}.jpg"
+        mv -vf $img $imgnew
+        ((++cnt))
+    done
+}
+
+function vpn {
+    local vpn_name="$1"
+    local conf_name="${2:-config.conf}"
+    set -e
+    (
+        cd "/home/lbakken/Projects/src/lbakken/vpn/$vpn_name"
+        sudo openvpn --config "$conf_name"
+    )
+    set +e
+}
 
 function plzreview {
     local -i ticket=$1
@@ -16,9 +39,18 @@ function start {
         if [[ $item == '.' ]]
         then
             item="$PWD"
+        elif [[ $item == '..' ]]
+        then
+            item="$PWD/../"
+        elif [[ $item != /* ]]
+        then
+            item="$PWD/$item"
         fi
         local item_subst="$(echo $item | sed -e's/^\///' -e's/\//-/g')"
-        if [[ -x /usr/bin/pcmanfm-qt ]]
+        if [[ -x /usr/bin/xdg-open ]]
+        then
+            /usr/bin/xdg-open "$item" > "/tmp/start_${item_subst}.log" 2>&1
+        elif [[ -x /usr/bin/pcmanfm-qt ]]
         then
             /usr/bin/pcmanfm-qt "$item" > "/tmp/start_${item_subst}.log" 2>&1
         elif [[ -x /usr/bin/dolphin ]]
@@ -30,5 +62,12 @@ function start {
 
 function ff {
     find . \( -type d \( -name dev -o -name git \) -prune \) -o \( -type f -exec fgrep "$@" {} + \)
+}
+
+function psgrep {
+    local process="$1"
+    local first_char="${process:0:1}"
+    local rest="${process:1}"
+    ps auxww | egrep "[$first_char]$rest"
 }
 

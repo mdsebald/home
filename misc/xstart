@@ -1,6 +1,5 @@
 #!/bin/sh
 
-# /usr/bin/xset m 5 2
 # /usr/bin/xinput set-prop 11 277 -111 -111
 # /usr/bin/xkbcomp /home/lbakken/.xkb :0
 
@@ -24,4 +23,7 @@ xrandr_bin=/usr/bin/xrandr
 
 xscreensaver_bin=/usr/bin/xscreensaver
 [ -x $xscreensaver_bin ] && $xscreensaver_bin -nosplash >> $logfile 2>&1 &
+
+xset_bin=/usr/bin/xset
+[ -x $xset_bin ] && [ -f $xset_cfg ] && $xset_bin m 5 2 >> $logfile 2>&1
 
