@@ -1,29 +1,40 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # /usr/bin/xinput set-prop 11 277 -111 -111
 # /usr/bin/xkbcomp /home/lbakken/.xkb :0
 
-logdir=/home/lbakken/log
-logfile=/home/lbakken/log/xstart.log
+logdir="$HOME/log"
+logfile="$logdir/xstart.log"
 mkdir -p $logdir
 
-xkbcomp_bin=/usr/bin/xkbcomp
-xkbcomp_cfg=/home/lbakken/.xkb
-[ -x $xkbcomp_bin ] && [ -f $xkbcomp_cfg ] && $xkbcomp_bin $xkbcomp_cfg :0 >> $logfile 2>&1
+uname_s="$(uname -s)"
+case $uname_s in
+    FreeBSD)
+        xmodmap_bin="$(which xmodmap)"
+        xmodmap_cfg="$HOME/.dvorak.xmodmap"
+        [[ -x $xmodmap_bin ]] && [[ -f $xmodmap_cfg ]] && $xmodmap_bin $xmodmap_cfg >> $logfile 2>&1
+        ;;
+    *)
+        xkbcomp_bin="$(which xkbcomp)"
+        xkbcomp_cfg="$HOME/.xkb"
+        [[ -x $xkbcomp_bin ]] && [[ -f $xkbcomp_cfg ]] && $xkbcomp_bin $xkbcomp_cfg :0 >> $logfile 2>&1
+        ;;
+esac
 
-alsactl_bin=/usr/bin/alsactl
-alsactl_cfg=/home/lbakken/.config/asound.state
-[ -x $alsactl_bin ] && [ -f $alsactl_cfg ] && $alsactl_bin --file $alsactl_cfg restore >> $logfile 2>&1
+alsactl_bin="$(which alsactl)"
+alsactl_cfg="$HOME/.config/asound.state"
+[[ -x $alsactl_bin ]] && [[ -f $alsactl_cfg ]] && $alsactl_bin --file $alsactl_cfg restore >> $logfile 2>&1
 
-syndaemon_bin=/usr/bin/syndaemon
-[ -x $syndaemon_bin ] && $syndaemon_bin -t -k -i 2 >> $logfile 2>&1 &
+syndaemon_bin="$(which syndaemon)"
+[[ -x $syndaemon_bin ]] && $syndaemon_bin -t -k -i 2 >> $logfile 2>&1 &
 
-xrandr_bin=/usr/bin/xrandr
-[ -x $xrandr_bin ] && $xrandr_bin --dpi 96 >> $logfile 2>&1 &
+xrandr_bin="$(which xrandr)"
+[[ -x $xrandr_bin ]] && $xrandr_bin --dpi 96 >> $logfile 2>&1 &
 
-xscreensaver_bin=/usr/bin/xscreensaver
-[ -x $xscreensaver_bin ] && $xscreensaver_bin -nosplash >> $logfile 2>&1 &
+xscreensaver_bin="$(which xscreensaver)"
+[[ -x $xscreensaver_bin ]] && $xscreensaver_bin -nosplash >> $logfile 2>&1 &
 
-xset_bin=/usr/bin/xset
-[ -x $xset_bin ] && [ -f $xset_cfg ] && $xset_bin m 5 2 >> $logfile 2>&1
+xset_bin="$(which xset)"
+[[ -x $xset_bin ]] && $xset_bin m 5 2 >> $logfile 2>&1
+[[ -x $xset_bin ]] && $xset_bin r rate 200 60 >> $logfile 2>&1
 

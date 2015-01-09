@@ -1,23 +1,82 @@
-if [[ -d $HOME/tmp ]]
+#
+# ~/.bashrc
+#
+
+if [[ -d "$HOME/bin" ]]
 then
-  export TEMP=$HOME/tmp
-  export TMP=$HOME/tmp
+    export PATH="$PATH:$HOME/bin"
 fi
 
-if [[ $- == *i* ]]
+if [[ -d "$HOME/go" && -d "$HOME/go/bin" ]]
 then
-  # interactive
-  export PS1='$PWD $ '
-  export HISTFILE=$HOME/.sh_history
-  export EDITOR=vim
+    export GOPATH="$HOME/go"
+    export PATH="$PATH:$HOME/go/bin"
+fi
 
-  set -o emacs
+if [[ -d "$HOME/.rbenv/bin" ]]
+then
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    eval "$(rbenv init -)"
+fi
 
-  eval $(keychain --eval --agents ssh id_rsa)
+export VAGRANT_DEFAULT_PROVIDER=virtualbox
 
-  if [[ -f $HOME/.aliases ]]
-  then
-      source $HOME/.aliases
-  fi
+# If not running interactively, don't do anything past this point
+[[ $- != *i* ]] && return
+
+HISTCONTROL=ignoreboth
+HISTSIZE=16384
+HISTFILESIZE=16384
+
+shopt -s checkwinsize
+
+if ! shopt -oq posix
+then
+  [[ -f /usr/share/bash-completion/bash_completion ]] && \
+      source /usr/share/bash-completion/bash_completion
+  [[ -f /usr/local/share/bash-completion/bash_completion ]] && \
+      source /usr/local/share/bash-completion/bash_completion
+  [[ -f /etc/bash_completion ]] && source /etc/bash_completion
+fi
+
+[[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
+
+[[ -x ~/bin/keychain ]] && eval "$(~/bin/keychain --eval --agents ssh id_rsa)"
+
+PS1='[\u@\h \W]\$ '
+
+git_cmpl=/usr/share/git/completion/git-completion.bash
+[[ -f $git_cmpl  ]] && source $git_cmpl
+git_cmpl=/usr/local/share/git-core/contrib/completion/git-completion.bash
+[[ -f $git_cmpl  ]] && source $git_cmpl
+git_ps1=/usr/share/git/completion/git-prompt.sh
+[[ -f $git_ps1  ]] && source $git_ps1
+git_ps1=/usr/local/share/git-core/contrib/completion/git-prompt.sh
+[[ -f $git_ps1  ]] && source $git_ps1
+
+if [[ $(type -t __git_ps1) == 'function' ]]
+then
+    export GIT_PS1_SHOWDIRTYSTATE=1
+    export GIT_PS1_SHOWSTASHSTATE=1
+    export GIT_PS1_SHOWUNTRACKEDFILES=1
+    export GIT_PS1_SHOWUPSTREAM='auto'
+    export PS1='\[\033]0;\w\007\033[32m\]\u@\h \[\033[33m\w$(__git_ps1)\033[0m\]
+$ '
+fi
+
+perl5_local="$HOME/perl5"
+if [[ -d $perl5_local ]]
+then
+    PATH="$perl5_local/bin${PATH+:}${PATH}"; export PATH;
+    PERL5LIB="$perl5_local/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
+    PERL_LOCAL_LIB_ROOT="$perl5_local${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
+    PERL_MB_OPT="--install_base \"$perl5_local\""; export PERL_MB_OPT;
+    PERL_MM_OPT="INSTALL_BASE=$perl5_local"; export PERL_MM_OPT;
+fi
+
+ppid_cmdline="$(< /proc/$PPID/cmdline)"
+if [[ $ppid_cmdline == *qterminal* ]]
+then
+  export TERM=xterm-256color
 fi
 
