@@ -1,5 +1,10 @@
 execute pathogen#infect()
 
+if has('win32') || has('win64')
+    let g:ruby_path = 'C:\Rubies\Ruby193\bin'
+    set runtimepath^=~/.vim
+endif
+
 set nocompatible
 syntax on
 
@@ -10,6 +15,7 @@ filetype on
 filetype indent on
 filetype plugin on
 
+" TODO if Xwin
 set clipboard=unnamedplus
 
 set nu
@@ -54,6 +60,11 @@ set diffopt=filler,vertical
 
 runtime set_utf8.vim
 
+autocmd FileType markdown set syntax=off
+
+autocmd FileType dosbatch set encoding=latin1
+autocmd FileType dosbatch set fileencoding=latin1
+
 autocmd FileType conf set tabstop=8
 autocmd FileType conf set shiftwidth=8
 autocmd FileType conf set noexpandtab
@@ -88,6 +99,10 @@ autocmd FileType html set expandtab
 autocmd FileType html set shiftwidth=2
 autocmd FileType html set tabstop=2
 
+autocmd FileType yaml set expandtab
+autocmd FileType yaml set shiftwidth=2
+autocmd FileType yaml set tabstop=2
+
 autocmd FileType xml set expandtab
 autocmd FileType xml set shiftwidth=2
 autocmd FileType xml set tabstop=2
@@ -97,3 +112,14 @@ autocmd FileType markdown set shiftwidth=4
 autocmd FileType markdown set tabstop=4
 autocmd FileType markdown set textwidth=72
 autocmd FileType markdown set formatoptions=t
+
+autocmd FileType sql set expandtab
+autocmd FileType sql set shiftwidth=2
+autocmd FileType sql set tabstop=2
+
+autocmd FileType sh set expandtab
+autocmd FileType sh set shiftwidth=2
+autocmd FileType sh set tabstop=2
+autocmd FileType sh set encoding=latin1
+autocmd FileType sh set fileencoding=latin1
+autocmd FileType sh set fileformat=unix
