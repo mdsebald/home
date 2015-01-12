@@ -8,16 +8,15 @@ endif
 set nocompatible
 syntax on
 
-colorscheme solarized
-set background=dark
-
 filetype on
 filetype indent on
 filetype plugin on
 
-if has('win32') || has('win64')
+if has('win32') || has('win64') || has('win32unix')
     " NO-OP
 else
+    colorscheme solarized
+    set background=dark
     set clipboard=unnamedplus
 endif
 
