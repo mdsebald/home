@@ -80,9 +80,12 @@ then
     PERL_MM_OPT="INSTALL_BASE=$perl5_local"; export PERL_MM_OPT;
 fi
 
-ppid_cmdline="$(< /proc/$PPID/cmdline)"
-if [[ $ppid_cmdline == *qterminal* ]]
+ppid_cmdline_f="/proc/$PPID/cmdline"
+if [[ -f $ppid_cmdline_f ]]
 then
-    export TERM=xterm-256color
+    ppid_cmdline="$(< $ppid_cmdline_f)"
+    if [[ $ppid_cmdline == *qterminal* ]]
+    then
+        export TERM=xterm-256color
+    fi
 fi
-
