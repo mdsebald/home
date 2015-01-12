@@ -1,5 +1,5 @@
 #
-# ~/.bashrc
+# $HOME/.bashrc
 #
 
 if [[ -d "$HOME/bin" ]]
@@ -39,9 +39,9 @@ then
   [[ -f /etc/bash_completion ]] && source /etc/bash_completion
 fi
 
-[[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
+[[ -f $HOME/.bash_aliases ]] && source "$HOME/.bash_aliases"
 
-[[ -x ~/bin/keychain ]] && eval "$(~/bin/keychain --eval --agents ssh id_rsa)"
+[[ -x $HOME/bin/keychain ]] && eval "$($HOME/bin/keychain --eval --agents ssh id_rsa)"
 
 PS1='[\u@\h \W]\$ '
 
@@ -51,9 +51,12 @@ then
     [[ -f $git_cmpl  ]] && source $git_cmpl
     git_cmpl=/usr/local/share/git-core/contrib/completion/git-completion.bash
     [[ -f $git_cmpl  ]] && source $git_cmpl
+
     git_ps1=/usr/share/git/completion/git-prompt.sh
     [[ -f $git_ps1  ]] && source $git_ps1
     git_ps1=/usr/local/share/git-core/contrib/completion/git-prompt.sh
+    [[ -f $git_ps1  ]] && source $git_ps1
+    git_ps1="$HOME/.git-prompt.sh"
     [[ -f $git_ps1  ]] && source $git_ps1
 fi
 
