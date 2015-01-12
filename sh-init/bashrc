@@ -45,14 +45,17 @@ fi
 
 PS1='[\u@\h \W]\$ '
 
-git_cmpl=/usr/share/git/completion/git-completion.bash
-[[ -f $git_cmpl  ]] && source $git_cmpl
-git_cmpl=/usr/local/share/git-core/contrib/completion/git-completion.bash
-[[ -f $git_cmpl  ]] && source $git_cmpl
-git_ps1=/usr/share/git/completion/git-prompt.sh
-[[ -f $git_ps1  ]] && source $git_ps1
-git_ps1=/usr/local/share/git-core/contrib/completion/git-prompt.sh
-[[ -f $git_ps1  ]] && source $git_ps1
+if [[ $(type -t __git_ps1) != 'function' ]]
+then
+    git_cmpl=/usr/share/git/completion/git-completion.bash
+    [[ -f $git_cmpl  ]] && source $git_cmpl
+    git_cmpl=/usr/local/share/git-core/contrib/completion/git-completion.bash
+    [[ -f $git_cmpl  ]] && source $git_cmpl
+    git_ps1=/usr/share/git/completion/git-prompt.sh
+    [[ -f $git_ps1  ]] && source $git_ps1
+    git_ps1=/usr/local/share/git-core/contrib/completion/git-prompt.sh
+    [[ -f $git_ps1  ]] && source $git_ps1
+fi
 
 if [[ $(type -t __git_ps1) == 'function' ]]
 then
@@ -77,6 +80,6 @@ fi
 ppid_cmdline="$(< /proc/$PPID/cmdline)"
 if [[ $ppid_cmdline == *qterminal* ]]
 then
-  export TERM=xterm-256color
+    export TERM=xterm-256color
 fi
 
