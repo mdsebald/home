@@ -1,6 +1,11 @@
-set guifont=Source\ Code\ Pro\ 12
+if has('win32') || has('win64')
+    set guifont=Source_Code_Pro:h12:cANSI
+    au GUIEnter * simalt ~x
+else
+    set guifont=Source\ Code\ Pro\ 12
+endif
 set guioptions=ar
 set guiheadroom=0
 
-" set background=dark
+set background=dark
 colorscheme solarized
