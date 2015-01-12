@@ -78,12 +78,9 @@ autocmd FileType ruby set tabstop=4
 autocmd FileType sh set expandtab
 autocmd FileType sh set shiftwidth=4
 autocmd FileType sh set tabstop=4
-autocmd FileType bash set expandtab
-autocmd FileType bash set shiftwidth=4
-autocmd FileType bash set tabstop=4
-autocmd FileType ksh set expandtab
-autocmd FileType ksh set shiftwidth=4
-autocmd FileType ksh set tabstop=4
+autocmd FileType sh set encoding=latin1
+autocmd FileType sh set fileencoding=latin1
+autocmd FileType sh set fileformat=unix
 
 autocmd FileType perl set expandtab
 autocmd FileType perl set shiftwidth=4
@@ -118,10 +115,3 @@ autocmd FileType markdown set formatoptions=t
 autocmd FileType sql set expandtab
 autocmd FileType sql set shiftwidth=2
 autocmd FileType sql set tabstop=2
-
-autocmd FileType sh set expandtab
-autocmd FileType sh set shiftwidth=2
-autocmd FileType sh set tabstop=2
-autocmd FileType sh set encoding=latin1
-autocmd FileType sh set fileencoding=latin1
-autocmd FileType sh set fileformat=unix
