@@ -12,7 +12,7 @@ filetype on
 filetype indent on
 filetype plugin on
 
-if has('win32') || has('win64') || has('win32unix')
+if has('win32') || has('win64') || has('win32unix') || $TERM == 'cygwin'
     " NO-OP
 else
     colorscheme solarized
