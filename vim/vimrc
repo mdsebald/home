@@ -62,8 +62,6 @@ set diffopt=filler,vertical
 
 runtime set_utf8.vim
 
-autocmd FileType markdown set syntax=off
-
 autocmd FileType dosbatch set encoding=latin1
 autocmd FileType dosbatch set fileencoding=latin1
 
@@ -102,10 +100,15 @@ autocmd FileType yaml set expandtab
 autocmd FileType yaml set shiftwidth=2
 autocmd FileType yaml set tabstop=2
 
+autocmd FileType json set expandtab
+autocmd FileType json set shiftwidth=2
+autocmd FileType json set tabstop=2
+
 autocmd FileType xml set expandtab
 autocmd FileType xml set shiftwidth=2
 autocmd FileType xml set tabstop=2
 
+autocmd FileType markdown set syntax=off
 autocmd FileType markdown set expandtab
 autocmd FileType markdown set shiftwidth=4
 autocmd FileType markdown set tabstop=4

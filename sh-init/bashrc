@@ -19,6 +19,7 @@ then
     eval "$(rbenv init -)"
 fi
 
+# export VAGRANT_DEFAULT_PROVIDER=vmware_workstation
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
 
 # If not running interactively, don't do anything past this point
@@ -41,7 +42,10 @@ fi
 
 [[ -f $HOME/.bash_aliases ]] && source "$HOME/.bash_aliases"
 
-[[ -x $HOME/bin/keychain ]] && eval "$($HOME/bin/keychain --eval --agents ssh id_rsa)"
+if hash keychain 2>/dev/null
+then
+    eval "$(keychain --eval --agents ssh id_rsa)"
+fi
 
 PS1='[\u@\h \W]\$ '
 
