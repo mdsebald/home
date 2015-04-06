@@ -112,7 +112,7 @@ autocmd FileType markdown set syntax=off
 autocmd FileType markdown set expandtab
 autocmd FileType markdown set shiftwidth=4
 autocmd FileType markdown set tabstop=4
-autocmd FileType markdown set textwidth=72
+" autocmd FileType markdown set textwidth=72
 autocmd FileType markdown set formatoptions=t
 
 autocmd FileType sql set expandtab
