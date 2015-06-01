@@ -107,14 +107,24 @@ autocmd FileType json set tabstop=2
 autocmd FileType xml set expandtab
 autocmd FileType xml set shiftwidth=2
 autocmd FileType xml set tabstop=2
+autocmd FileType html set expandtab
+autocmd FileType html set expandtab
+autocmd FileType html set shiftwidth=2
+autocmd FileType xhtml set tabstop=2
+autocmd FileType xhtml set shiftwidth=2
+autocmd FileType xhtml set tabstop=2
 
 autocmd FileType markdown set syntax=off
 autocmd FileType markdown set expandtab
 autocmd FileType markdown set shiftwidth=4
 autocmd FileType markdown set tabstop=4
-" autocmd FileType markdown set textwidth=72
+autocmd FileType markdown set textwidth=80
 autocmd FileType markdown set formatoptions=t
 
 autocmd FileType sql set expandtab
 autocmd FileType sql set shiftwidth=2
 autocmd FileType sql set tabstop=2
+
+autocmd FileType go set noexpandtab
+autocmd FileType go set shiftwidth=4
+autocmd FileType go set tabstop=4
