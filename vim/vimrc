@@ -1,9 +1,9 @@
-execute pathogen#infect()
-
 if has('win32') || has('win64')
     let g:ruby_path = 'C:\Rubies\Ruby193\bin'
-    set runtimepath^=~/.vim
+    set runtimepath=$VIMRUNTIME,$USERPROFILE\\.vim
 endif
+
+execute pathogen#infect()
 
 set nocompatible
 syntax on
