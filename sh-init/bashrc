@@ -64,6 +64,8 @@ then
     [[ -f $git_ps1  ]] && source $git_ps1
     git_ps1="$HOME/.git-prompt.sh"
     [[ -f $git_ps1  ]] && source $git_ps1
+    git_ps1=/etc/bash_completion.d/git-prompt
+    [[ -f $git_ps1  ]] && source $git_ps1
 fi
 
 if [[ $(type -t __git_ps1) == 'function' ]]
