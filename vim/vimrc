@@ -12,11 +12,14 @@ filetype on
 filetype indent on
 filetype plugin on
 
-if has('win32') || has('win64') || has('win32unix') || $TERM == 'cygwin'
+if has('win32') || has('win64')
     " NO-OP
-else
-    colorscheme solarized
+elseif has('win32unix')
     set background=dark
+    colorscheme solarized
+else
+    set background=dark
+    colorscheme solarized
     set clipboard=unnamedplus
 endif
 
