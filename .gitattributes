@@ -2,5 +2,6 @@
 * text=lf
 
 # Files that must be LF ending
-vim/vimrc    text eol=lf
+vim/vimrc     text eol=lf
 vim/gvimrc    text eol=lf
+sh-init/*     text eol=lf
