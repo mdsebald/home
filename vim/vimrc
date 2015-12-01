@@ -26,24 +26,26 @@ endif
 set nu
 set ruler
 hi LineNr term=NONE
+
 set autoindent
 set autowrite
-set tabstop=4
-set shiftwidth=4
-set shiftround
-set expandtab
 set backup
 set backupcopy=yes
-set nohls
-set noincsearch
-set nocindent
 set backupdir=$HOME/tmp//,$TEMP//,/tmp//,.//
 set dir=$HOME/tmp//,$TEMP//,/tmp//,.//
-set viminfo='1000,f1,\"500,:1000,rA:,rB:,rD:,h
-set wildmenu
-set laststatus=2
-set showcmd
+set expandtab
 set formatoptions=cqro
+set history=256
+set laststatus=2
+set nocindent
+set nohls
+set noincsearch
+set shiftround
+set shiftwidth=4
+set showcmd
+set tabstop=4
+set viminfo='1024,f1,<500,s256,:1024,rA:,rB:,rD:,h
+set wildmenu
 
 " dvorak
 map l s
