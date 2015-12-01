@@ -14,9 +14,6 @@ filetype plugin on
 
 if has('win32') || has('win64')
     " NO-OP
-elseif has('win32unix')
-    set background=dark
-    colorscheme solarized
 else
     set background=dark
     colorscheme solarized
