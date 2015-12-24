@@ -38,8 +38,7 @@ HISTFILESIZE=16384
 
 shopt -s checkwinsize
 
-declare -r uname="$(uname)"
-if [[ $uname == MINGW64* ]]
+if [[ $MSYSTEM == 'MINGW64' ]]
 then
     declare -r ssh_agent_pid_file='/tmp/.ssh/SSH_AGENT_PID.env'
     declare -r ssh_auth_sock_file='/tmp/.ssh/SSH_AUTH_SOCK.env'
@@ -55,7 +54,7 @@ then
     eval "$(keychain --eval --agents ssh id_rsa)"
 fi
 
-if [[ $uname == MINGW64* ]]
+if [[ $MSYSTEM == 'MINGW64' ]]
 then
     if (( SSH_AGENT_PID > 0 )) && ps -p $SSH_AGENT_PID >/dev/null
     then
