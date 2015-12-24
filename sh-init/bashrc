@@ -29,9 +29,6 @@ then
 	eval "$(pyenv init -)"
 fi
 
-# export VAGRANT_DEFAULT_PROVIDER=vmware_workstation
-export VAGRANT_DEFAULT_PROVIDER=virtualbox
-
 # If not running interactively, don't do anything past this point
 [[ $- != *i* ]] && return
 
@@ -40,6 +37,41 @@ HISTSIZE=16384
 HISTFILESIZE=16384
 
 shopt -s checkwinsize
+
+declare -r uname="$(uname)"
+if [[ $uname == MINGW64* ]]
+then
+    declare -r ssh_agent_pid_file='/tmp/.ssh/SSH_AGENT_PID.env'
+    declare -r ssh_auth_sock_file='/tmp/.ssh/SSH_AUTH_SOCK.env'
+    if [[ -s $ssh_agent_pid_file && -s $ssh_auth_sock_file ]]
+    then
+        export SSH_AGENT_PID="$(< $ssh_agent_pid_file)"
+        export SSH_AUTH_SOCK="$(< $ssh_auth_sock_file)"
+    fi
+fi
+
+if hash keychain 2>/dev/null
+then
+    eval "$(keychain --eval --agents ssh id_rsa)"
+fi
+
+if [[ $uname == MINGW64* ]]
+then
+    if (( SSH_AGENT_PID > 0 )) && ps -p $SSH_AGENT_PID >/dev/null
+    then
+        declare -i tmp_ssh_agent_pid=0
+        if [[ -s $ssh_agent_pid_file ]]
+        then
+            tmp_ssh_agent_pid="$(< $ssh_agent_pid_file)"
+        fi
+        if (( SSH_AGENT_PID != tmp_ssh_agent_pid ))
+        then
+            mkdir -p /tmp/.ssh
+            echo $SSH_AGENT_PID > $ssh_agent_pid_file
+            echo $SSH_AUTH_SOCK > $ssh_auth_sock_file
+        fi
+    fi
+fi
 
 if ! shopt -oq posix
 then
@@ -51,11 +83,6 @@ then
 fi
 
 [[ -f $HOME/.bash_aliases ]] && source "$HOME/.bash_aliases"
-
-if hash keychain 2>/dev/null
-then
-    eval "$(keychain --eval --agents ssh id_rsa)"
-fi
 
 PS1='[\u@\h \W]\$ '
 
