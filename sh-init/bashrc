@@ -7,6 +7,11 @@ then
     export PATH="$PATH:$HOME/bin"
 fi
 
+if [[ -d "$HOME/npm/bin" ]]
+then
+    export PATH="$PATH:$HOME/npm/bin"
+fi
+
 if [[ -d "$HOME/go" && -d "$HOME/go/bin" ]]
 then
     export GOPATH="$HOME/go"
@@ -27,6 +32,11 @@ then
     export PYENV_ROOT
     export PATH="$PYENV_ROOT/bin:$PATH"
     eval "$(pyenv init -)"
+fi
+
+if [[ -d $HOME/perl5 ]]
+then
+    eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"
 fi
 
 # If not running interactively, don't do anything past this point
@@ -114,16 +124,6 @@ then
 $ '
 fi
 
-perl5_local="$HOME/perl5"
-if [[ -d $perl5_local ]]
-then
-    PATH="$perl5_local/bin${PATH+:}${PATH}"; export PATH;
-    PERL5LIB="$perl5_local/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
-    PERL_LOCAL_LIB_ROOT="$perl5_local${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
-    PERL_MB_OPT="--install_base \"$perl5_local\""; export PERL_MB_OPT;
-    PERL_MM_OPT="INSTALL_BASE=$perl5_local"; export PERL_MM_OPT;
-fi
-
 ppid_cmdline_f="/proc/$PPID/cmdline"
 if [[ -f $ppid_cmdline_f ]]
 then
@@ -132,4 +132,10 @@ then
     then
         export TERM=xterm-256color
     fi
+fi
+
+declare -r rtrc="$HOME/.riak-test-rc"
+if [[ -s $rtrc ]]
+then
+    source $rtrc
 fi
