@@ -139,3 +139,6 @@ if [[ -s $rtrc ]]
 then
     source $rtrc
 fi
+
+# added by travis gem
+[ -f /home/lbakken/.travis/travis.sh ] && source /home/lbakken/.travis/travis.sh

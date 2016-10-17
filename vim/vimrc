@@ -70,8 +70,8 @@ autocmd FileType conf set shiftwidth=8
 autocmd FileType conf set noexpandtab
 
 autocmd FileType ruby set expandtab
-autocmd FileType ruby set shiftwidth=4
-autocmd FileType ruby set tabstop=4
+autocmd FileType ruby set shiftwidth=2
+autocmd FileType ruby set tabstop=2
 
 autocmd FileType sh set expandtab
 autocmd FileType sh set shiftwidth=4
