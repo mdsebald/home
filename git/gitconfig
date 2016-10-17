@@ -1,0 +1,39 @@
+[user]
+	name = Luke Bakken
+	email = luke@bakken.io
+	signingkey = F589A49C
+	useconfigonly = true
+[core]
+	autocrlf = input
+	filemode = true
+	editor = vim
+	safecrlf = false
+	excludesfile = /home/lbakken/.gitignore_global
+[color]
+	ui = true
+[alias]
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	st = status
+	ci = commit
+	co = checkout
+	clcs = clean -fxd -e '*.user' -e '*.suo'
+	m = merge
+	f = fetch
+	rp = remote prune
+	pu = push
+	b = branch
+	r = rebase
+[push]
+	default = upstream
+[grep]
+	lineNumber = true
+[merge]
+	tool = vimdiff
+[diff]
+	guitool = vimdiff
+	tool = vimdiff
+
+[pull]
+	rebase = true
+[credential]
+	helper = cache
