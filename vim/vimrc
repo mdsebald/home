@@ -3,8 +3,6 @@ if has('win32') || has('win64')
     set runtimepath=$VIMRUNTIME,$USERPROFILE\\.vim
 endif
 
-execute pathogen#infect()
-
 set nocompatible
 syntax on
 
