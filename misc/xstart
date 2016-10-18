@@ -3,9 +3,9 @@
 # /usr/bin/xinput set-prop 11 277 -111 -111
 # /usr/bin/xkbcomp /home/lbakken/.xkb :0
 
-logdir="$HOME/log"
-logfile="$logdir/xstart.log"
-mkdir -p $logdir
+declare logdir="$HOME/log"
+declare logfile="$logdir/xstart.log"
+mkdir -fp $logdir
 
 uname_s="$(uname -s)"
 case $uname_s in
