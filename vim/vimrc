@@ -3,8 +3,6 @@ if has('win32') || has('win64')
     set runtimepath=$VIMRUNTIME,$USERPROFILE\\.vim
 endif
 
-execute pathogen#infect()
-
 set nocompatible
 syntax on
 
@@ -16,6 +14,7 @@ if has('win32') || has('win64')
     " NO-OP
 else
     colorscheme solarized
+    " set background=light
     set background=dark
     set clipboard=unnamedplus
 endif
