@@ -1,7 +1,7 @@
 [user]
 	name = Luke Bakken
 	email = luke@bakken.io
-	signingkey = F589A49C
+	signingkey = D695DA1410038D4D0943CE172BE7F6CAD868C17D
 	useconfigonly = true
 [core]
 	autocrlf = input
@@ -37,3 +37,5 @@
 	rebase = true
 [credential]
 	helper = cache
+[commit]
+	gpgsign = true
