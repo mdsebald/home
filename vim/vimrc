@@ -14,9 +14,8 @@ if has('win32') || has('win64')
     " NO-OP
 else
     colorscheme solarized
-    set background=light
-    " set background=dark
-    set clipboard=unnamedplus
+    set background=dark
+    set clipboard+=unnamedplus
 endif
 
 set nu
@@ -40,6 +39,8 @@ set wildmenu
 set laststatus=2
 set showcmd
 set formatoptions=cqro
+set guicursor=a:blinkon0
+set wildignore+=*.pdf,*.o,*.obj,*.jpg,*.png,*.beam
 
 " dvorak
 map l s

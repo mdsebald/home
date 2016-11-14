@@ -5,3 +5,4 @@ KERL_GIT_DIR=/home/erlang/gits
 KERL_DEFAULT_INSTALL_DIR=/home/erlang/installs
 KERL_ENABLE_PROMPT=YES
 KERL_CONFIGURE_OPTIONS='--enable-hipe --enable-smp-support --enable-threads --enable-kernel-poll --without-odbc'
+# KERL_CONFIGURE_OPTIONS='--enable-hipe --enable-smp-support --enable-threads --enable-kernel-poll --without-odbc --without-termcap'

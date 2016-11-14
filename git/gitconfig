@@ -1,14 +1,14 @@
 [user]
 	name = Luke Bakken
 	email = luke@bakken.io
-	signingkey = D695DA1410038D4D0943CE172BE7F6CAD868C17D
+	signingkey = E4A37A5B42627911600F3F81B707DD932540186E
 	useconfigonly = true
 [core]
 	autocrlf = input
+	safecrlf = true
 	filemode = true
-	editor = vim
-	safecrlf = false
 	excludesfile = /home/lbakken/.gitignore_global
+	editor = vim
 [color]
 	ui = true
 [alias]
@@ -16,7 +16,6 @@
 	st = status
 	ci = commit
 	co = checkout
-	clcs = clean -fxd -e '*.user' -e '*.suo'
 	m = merge
 	f = fetch
 	rp = remote prune
@@ -32,10 +31,18 @@
 [diff]
 	guitool = vimdiff
 	tool = vimdiff
-
 [pull]
 	rebase = true
 [credential]
 	helper = cache
 [commit]
 	gpgsign = true
+[url "https://"]
+    insteadOf = git://
+[gui]
+	fontui = -family \"Noto Sans\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
+	fontdiff = -family \"Source Code Pro\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
+	tabsize = 4
+[cola]
+	fontdiff = Source Code Pro,10,-1,5,50,0,0,0,0,0
+	tabwidth = 4

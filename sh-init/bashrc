@@ -127,7 +127,7 @@ fi
 ppid_cmdline_f="/proc/$PPID/cmdline"
 if [[ -f $ppid_cmdline_f ]]
 then
-    ppid_cmdline="$(< $ppid_cmdline_f)"
+    ppid_cmdline="$(tr -d '\0' < $ppid_cmdline_f)"
     if [[ $ppid_cmdline == *qterminal* || $ppid_cmdline == *konsole* ]]
     then
         export TERM=xterm-256color
