@@ -1,6 +1,6 @@
 PROJDIR = $(realpath $(CURDIR))
 
-all: vimdir vimrc gvimrc bash kerlrc tmux git
+all: vimdir vimrc gvimrc bash kerlrc tmux git xorg gemrc
 
 clean:
 	@rm -vf $(PROJDIR)/dot-vim/colors/solarized.vim
@@ -15,6 +15,9 @@ clean:
 	@rm -vf $(HOME)/.tmux.conf
 	@rm -vf $(HOME)/.gitconfig
 	@rm -vf $(HOME)/.gitignore_global
+	@rm -vf $(HOME)/.gemrc
+	@rm -vf $(HOME)/.xinitrc
+	@rm -vf $(HOME)/.Xresources
 
 vimdir: $(PROJDIR)/dot-vim/colors/solarized.vim $(PROJDIR)/dot-vim/set_utf8.vim $(HOME)/.vim
 $(PROJDIR)/dot-vim/colors/solarized.vim:
@@ -57,3 +60,14 @@ $(HOME)/.gitconfig:
 	ln -vsf $(PROJDIR)/dot-gitconfig $(HOME)/.gitconfig
 $(HOME)/.gitignore_global:
 	ln -vsf $(PROJDIR)/dot-gitignore_global $(HOME)/.gitignore_global
+
+gemrc: $(HOME)/.gemrc
+$(HOME)/.gemrc:
+	ln -vsf $(PROJDIR)/dot-gemrc $(HOME)/.gemrc
+
+xorg: $(HOME)/.xinitrc $(HOME)/.Xresources
+$(HOME)/.Xresources:
+	ln -vsf $(PROJDIR)/dot-Xresources $(HOME)/.Xresources
+	xrdb -merge $(HOME)/.Xresources
+$(HOME)/.xinitrc:
+	ln -vsf $(PROJDIR)/dot-xinitrc $(HOME)/.xinitrc
