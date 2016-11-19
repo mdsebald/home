@@ -4,7 +4,7 @@ all: vimdir vimrc gvimrc bash kerlrc tmux git
 
 clean:
 	@rm -vf $(PROJDIR)/dot-vim/colors/solarized.vim
-	@rm -vf $(PROJDIR)/dot-vim/scripts/set_utf8.vim
+	@rm -vf $(PROJDIR)/dot-vim/set_utf8.vim
 	@rm -vf $(HOME)/.vim
 	@rm -vf $(HOME)/.vimrc
 	@rm -vf $(HOME)/.gvimrc
@@ -16,13 +16,13 @@ clean:
 	@rm -vf $(HOME)/.gitconfig
 	@rm -vf $(HOME)/.gitignore_global
 
-vimdir: $(PROJDIR)/dot-vim/colors/solarized.vim $(PROJDIR)/dot-vim/scripts/set_utf8.vim $(HOME)/.vim
+vimdir: $(PROJDIR)/dot-vim/colors/solarized.vim $(PROJDIR)/dot-vim/set_utf8.vim $(HOME)/.vim
 $(PROJDIR)/dot-vim/colors/solarized.vim:
 	curl -Lo $(PROJDIR)/dot-vim/colors/solarized.vim \
 		https://raw.githubusercontent.com/altercation/vim-colors-solarized/master/colors/solarized.vim
 
-$(PROJDIR)/dot-vim/scripts/set_utf8.vim:
-	curl -Lo $(PROJDIR)/dot-vim/scripts/set_utf8.vim \
+$(PROJDIR)/dot-vim/set_utf8.vim:
+	curl -Lo $(PROJDIR)/dot-vim/set_utf8.vim \
 		https://raw.githubusercontent.com/vim-scripts/set_utf8.vim/master/plugin/set_utf8.vim
 
 $(HOME)/.vim:
