@@ -1,3 +1,4 @@
 .directory/
 dot-vim/colors/solarized.vim
 dot-vim/scripts/set_utf8.vim
+dot-vim/.netrwhist

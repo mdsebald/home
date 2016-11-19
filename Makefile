@@ -2,13 +2,28 @@ PROJDIR = $(realpath $(CURDIR))
 
 all: vimdir vimrc gvimrc bash kerlrc tmux git
 
-vimdir: $(HOME)/.vim/colors/solarized.vim $(HOME)/.vim/scripts/set_utf8.vim
-$(HOME)/.vim/colors/solarized.vim:
-	curl -Lo dot-vim/colors/solarized.vim https://raw.githubusercontent.com/altercation/vim-colors-solarized/master/colors/solarized.vim
-	ln -vsf $(PROJDIR)/dot-vim $(HOME)/.vim
+clean:
+	@rm -vf $(PROJDIR)/dot-vim/colors/solarized.vim
+	@rm -vf $(PROJDIR)/dot-vim/scripts/set_utf8.vim
+	@rm -vf $(HOME)/.vim
+	@rm -vf $(HOME)/.vimrc
+	@rm -vf $(HOME)/.gvimrc
+	@rm -vf $(HOME)/.bashrc
+	@rm -vf $(HOME)/.bash_aliases
+	@rm -vf $(HOME)/.bash_profile
+	@rm -vf $(HOME)/.kerlrc
+	@rm -vf $(HOME)/.tmux.conf
+	@rm -vf $(HOME)/.gitconfig
+	@rm -vf $(HOME)/.gitignore_global
 
-$(HOME)/.vim/scripts/set_utf8.vim:
+vimdir: $(PROJDIR)/dot-vim/colors/solarized.vim $(PROJDIR)/dot-vim/scripts/set_utf8.vim $(HOME)/.vim
+$(PROJDIR)/dot-vim/colors/solarized.vim:
+	curl -Lo dot-vim/colors/solarized.vim https://raw.githubusercontent.com/altercation/vim-colors-solarized/master/colors/solarized.vim
+
+$(PROJDIR)/dot-vim/scripts/set_utf8.vim:
 	curl -Lo dot-vim/scripts/set_utf8.vim https://raw.githubusercontent.com/vim-scripts/set_utf8.vim/master/plugin/set_utf8.vim
+
+$(HOME)/.vim:
 	ln -vsf $(PROJDIR)/dot-vim $(HOME)/.vim
 
 vimrc: $(HOME)/.vimrc
