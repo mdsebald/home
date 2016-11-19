@@ -1,4 +1,4 @@
-dotfiles
+home
 ========
 
-Shell initialization files.
+`$HOME` directory for Arch Linux.
