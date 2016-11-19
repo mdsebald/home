@@ -18,10 +18,12 @@ clean:
 
 vimdir: $(PROJDIR)/dot-vim/colors/solarized.vim $(PROJDIR)/dot-vim/scripts/set_utf8.vim $(HOME)/.vim
 $(PROJDIR)/dot-vim/colors/solarized.vim:
-	curl -Lo dot-vim/colors/solarized.vim https://raw.githubusercontent.com/altercation/vim-colors-solarized/master/colors/solarized.vim
+	curl -Lo $(PROJDIR)/dot-vim/colors/solarized.vim \
+		https://raw.githubusercontent.com/altercation/vim-colors-solarized/master/colors/solarized.vim
 
 $(PROJDIR)/dot-vim/scripts/set_utf8.vim:
-	curl -Lo dot-vim/scripts/set_utf8.vim https://raw.githubusercontent.com/vim-scripts/set_utf8.vim/master/plugin/set_utf8.vim
+	curl -Lo $(PROJDIR)/dot-vim/scripts/set_utf8.vim \
+		https://raw.githubusercontent.com/vim-scripts/set_utf8.vim/master/plugin/set_utf8.vim
 
 $(HOME)/.vim:
 	ln -vsf $(PROJDIR)/dot-vim $(HOME)/.vim
