@@ -18,6 +18,7 @@ clean:
 	@rm -vf $(HOME)/.gemrc
 	@rm -vf $(HOME)/.xinitrc
 	@rm -vf $(HOME)/.Xresources
+	@rm -vf $(HOME)/.abcde.conf
 
 vimdir: $(PROJDIR)/dot-vim/colors/solarized.vim $(PROJDIR)/dot-vim/set_utf8.vim $(HOME)/.vim
 $(PROJDIR)/dot-vim/colors/solarized.vim:
@@ -71,3 +72,7 @@ $(HOME)/.Xresources:
 	xrdb -merge $(HOME)/.Xresources
 $(HOME)/.xinitrc:
 	ln -vsf $(PROJDIR)/dot-xinitrc $(HOME)/.xinitrc
+
+abcde: $(HOME)/.abcde.conf
+$(HOME)/.abcde.conf:
+	ln -vsf $(PROJDIR)/dot-abcde.conf $(HOME)/.abcde.conf
