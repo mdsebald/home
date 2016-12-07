@@ -5,7 +5,7 @@ all: vimdir vimrc gvimrc bash kerlrc tmux git xorg gemrc
 clean:
 	@rm -vf $(PROJDIR)/dot-vim/colors/solarized.vim
 	@rm -vf $(PROJDIR)/dot-vim/set_utf8.vim
-	@rm -vf $(HOME)/.vim
+	@rm -vrf $(HOME)/.vim
 	@rm -vf $(HOME)/.vimrc
 	@rm -vf $(HOME)/.gvimrc
 	@rm -vf $(HOME)/.bashrc

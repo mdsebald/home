@@ -42,7 +42,7 @@ URxvt*scrollBar:            false
 ! Perl extensions
 URxvt*perl-ext-common:      default,matcher,selection-to-clipboard
 URxvt*matcher.button:       1
-URxvt*urlLauncher:          chromium
+URxvt*url-launcher:         /usr/bin/xdg-open
 
 ! Cursor
 URxvt*cursorBlink:          false
