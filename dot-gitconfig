@@ -34,7 +34,9 @@
 [pull]
 	rebase = true
 [credential]
-	helper = cache
+    helper = cache
+[credential "https://github.com"]
+    username = lukebakken
 [commit]
 	gpgsign = true
 [url "https://"]
