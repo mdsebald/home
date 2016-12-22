@@ -1,10 +1,11 @@
+#include "/home/lbakken/.Xresources_custom"
+
 !-------------------------------------------------------------------------------
 ! Xft settings
 !-------------------------------------------------------------------------------
-
 Xft*antialias:              true
 Xft*autohint:               false
-Xft*dpi:                    96
+! Xft*dpi:                  CUSTOM
 Xft*hinting:                true
 Xft*hintstyle:              hintslight
 Xft*lcdfilter:              lcddefault
@@ -29,8 +30,8 @@ URxvt*lineSpace:            0
 
 ! Fonts
 URxvt*allow_bold:           false
-URxvt*font:                 xft:Source Code Pro:size=12
-URxvt*boldFont:             xft:Source Code Pro:size=12
+! URxvt*font:               CUSTOM
+! URxvt*boldFont:           CUSTOM
 
 ! Fix font space
 URxvt*letterSpace: -1
@@ -43,7 +44,6 @@ URxvt*scrollBar:            false
 URxvt*perl-ext-common:      default,matcher,selection-to-clipboard
 URxvt*url-launcher:         /usr/bin/xdg-open
 URxvt*matcher.button:       1
-URxvt*url-launcher:         /usr/bin/xdg-open
 
 ! Cursor
 URxvt*cursorBlink:          false

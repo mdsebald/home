@@ -56,6 +56,7 @@ set noremap
 set diffopt=filler,vertical
 
 runtime set_utf8.vim
+set nobomb
 
 autocmd FileType dosbatch set encoding=latin1
 autocmd FileType dosbatch set fileencoding=latin1

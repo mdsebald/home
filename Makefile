@@ -1,27 +1,44 @@
 PROJDIR := $(realpath $(CURDIR))
 HOSTNAME := $(shell hostname)
 
-all: vimdir vimrc gvimrc bash kerlrc tmux git xorg gemrc
+all: vimdir vimrc gvimrc bash kerlrc tmux git xorg gemrc abcde
 
-clean:
+vim_clean:
 	@rm -vf $(PROJDIR)/dot-vim/colors/solarized.vim
 	@rm -vf $(PROJDIR)/dot-vim/set_utf8.vim
 	@rm -vrf $(HOME)/.vim
 	@rm -vf $(HOME)/.vimrc
 	@rm -vf $(HOME)/.gvimrc
+
+bash_clean:
 	@rm -vf $(HOME)/.bashrc
 	@rm -vf $(HOME)/.bash_aliases
 	@rm -vf $(HOME)/.bash_profile
+
+kerl_clean:
 	@rm -vf $(HOME)/.kerlrc
+
+tmux_clean:
 	@rm -vf $(HOME)/.tmux.conf
+
+git_clean:
 	@rm -vf $(HOME)/.gitconfig
 	@rm -vf $(HOME)/.gitconfig_custom
 	@rm -vf $(HOME)/.gitignore_global
-	@rm -vf $(HOME)/.gemrc
+
+xorg_clean:
 	@rm -vf $(HOME)/.xinitrc
 	@rm -vf $(HOME)/.Xresources
+	@rm -vf $(HOME)/.Xresources_custom
+
+gemrc_clean:
+	@rm -vf $(HOME)/.gemrc
+
+abcde_clean:
 	@rm -vf $(HOME)/.abcde.conf
 	@rm -vf $(HOME)/.abcde-lame.conf
+
+clean: vim_clean bash_clean kerl_clean tmux_clean git_clean xorg_clean gemrc_clean abcde_clean
 
 vimdir: $(PROJDIR)/dot-vim/colors/solarized.vim $(PROJDIR)/dot-vim/set_utf8.vim $(HOME)/.vim
 $(PROJDIR)/dot-vim/colors/solarized.vim:
@@ -71,9 +88,11 @@ gemrc: $(HOME)/.gemrc
 $(HOME)/.gemrc:
 	ln -vsf $(PROJDIR)/dot-gemrc $(HOME)/.gemrc
 
-xorg: $(HOME)/.xinitrc $(HOME)/.Xresources
+xorg: $(HOME)/.xinitrc $(HOME)/.Xresources $(HOME)/.Xresources_custom
 $(HOME)/.Xresources:
 	ln -vsf $(PROJDIR)/dot-Xresources $(HOME)/.Xresources
+$(HOME)/.Xresources_custom:
+	ln -vsf $(PROJDIR)/dot-Xresources-$(HOSTNAME) $(HOME)/.Xresources_custom
 	xrdb -merge $(HOME)/.Xresources
 $(HOME)/.xinitrc:
 	ln -vsf $(PROJDIR)/dot-xinitrc $(HOME)/.xinitrc
