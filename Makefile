@@ -1,4 +1,5 @@
-PROJDIR = $(realpath $(CURDIR))
+PROJDIR := $(realpath $(CURDIR))
+HOSTNAME := $(shell hostname)
 
 all: vimdir vimrc gvimrc bash kerlrc tmux git xorg gemrc
 
@@ -14,6 +15,7 @@ clean:
 	@rm -vf $(HOME)/.kerlrc
 	@rm -vf $(HOME)/.tmux.conf
 	@rm -vf $(HOME)/.gitconfig
+	@rm -vf $(HOME)/.gitconfig_custom
 	@rm -vf $(HOME)/.gitignore_global
 	@rm -vf $(HOME)/.gemrc
 	@rm -vf $(HOME)/.xinitrc
@@ -57,9 +59,11 @@ tmux: $(HOME)/.tmux.conf
 $(HOME)/.tmux.conf:
 	ln -vsf $(PROJDIR)/dot-tmux.conf $(HOME)/.tmux.conf
 
-git: $(HOME)/.gitconfig $(HOME)/.gitignore_global
+git: $(HOME)/.gitconfig $(HOME)/.gitignore_global $(HOME)/.gitconfig_custom
 $(HOME)/.gitconfig:
 	ln -vsf $(PROJDIR)/dot-gitconfig $(HOME)/.gitconfig
+$(HOME)/.gitconfig_custom:
+	ln -vsf $(PROJDIR)/dot-gitconfig-$(HOSTNAME) $(HOME)/.gitconfig_custom
 $(HOME)/.gitignore_global:
 	ln -vsf $(PROJDIR)/dot-gitignore_global $(HOME)/.gitignore_global
 

@@ -1,7 +1,8 @@
+[include]
+    path = /home/lbakken/.gitconfig_custom
 [user]
 	name = Luke Bakken
 	email = luke@bakken.io
-    signingkey = E4A37A5B42627911600F3F81B707DD932540186E
 	useconfigonly = true
 [core]
 	autocrlf = input
