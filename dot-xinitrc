@@ -1,1 +1,1 @@
-exec startkde
+exec /usr/bin/startkde

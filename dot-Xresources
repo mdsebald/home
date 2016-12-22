@@ -4,7 +4,7 @@
 
 Xft*antialias:              true
 Xft*autohint:               false
-Xft*dpi:                    168
+Xft*dpi:                    96
 Xft*hinting:                true
 Xft*hintstyle:              hintslight
 Xft*lcdfilter:              lcddefault
@@ -67,7 +67,6 @@ URxvt*pointerBlank:         true
 #define S_green         #859900
 
 ! Dark
-
 #define S_base03        #002b36
 #define S_base02        #073642
 #define S_base01        #586e75
@@ -78,7 +77,6 @@ URxvt*pointerBlank:         true
 #define S_base3         #fdf6e3
 
 ! Light
-
 ! #define S_base03        #fdf6e3
 ! #define S_base02        #eee8d5
 ! #define S_base01        #93a1a1
