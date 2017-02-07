@@ -9,7 +9,7 @@ if has('win32') || has('win64')
     " NO-OP
 else
     colorscheme solarized
-    set background=dark
+    set background=light
     set clipboard+=unnamedplus
 endif
 
