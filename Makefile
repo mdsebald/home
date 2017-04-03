@@ -1,7 +1,8 @@
 PROJDIR := $(realpath $(CURDIR))
 HOSTNAME := $(shell hostname)
+HOME_BIN := $(realpath $(HOME))/bin
 
-all: vimdir vimrc gvimrc bash kerlrc tmux git xorg gemrc abcde
+all: vimdir vimrc gvimrc bash kerl kerlrc tmux git xorg gemrc abcde
 
 vim_clean:
 	@rm -vf $(PROJDIR)/dot-vim/colors/solarized.vim
@@ -16,6 +17,7 @@ bash_clean:
 	@rm -vf $(HOME)/.bash_profile
 
 kerl_clean:
+	@rm -vf $(HOME_BIN)/kerl
 	@rm -vf $(HOME)/.kerlrc
 
 tmux_clean:
@@ -67,6 +69,12 @@ $(HOME)/.bash_aliases:
 	ln -vsf $(PROJDIR)/dot-bash_aliases $(HOME)/.bash_aliases
 $(HOME)/.bash_profile:
 	ln -vsf $(PROJDIR)/dot-bash_profile $(HOME)/.bash_profile
+
+kerl: $(HOME_BIN)/kerl
+$(HOME_BIN)/kerl:
+	mkdir -p $(HOME_BIN)
+	curl -o $(HOME_BIN)/kerl https://raw.githubusercontent.com/kerl/kerl/master/kerl
+	chmod 755 $(HOME_BIN)/kerl
 
 kerlrc: $(HOME)/.kerlrc
 $(HOME)/.kerlrc:
