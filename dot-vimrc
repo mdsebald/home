@@ -9,7 +9,7 @@ if has('win32') || has('win64')
     " NO-OP
 else
     colorscheme solarized
-    set background=light
+    set background=dark
     set clipboard+=unnamedplus
 endif
 
@@ -54,6 +54,9 @@ map gk gn
 map gn gk
 set noremap
 set diffopt=filler,vertical
+
+set exrc
+set secure
 
 runtime set_utf8.vim
 set nobomb
