@@ -18,6 +18,12 @@ then
     export PATH="$PATH:$HOME/go/bin"
 fi
 
+REBAR3_BIN="$HOME/.cache/rebar3/bin"
+if [[ -x $REBAR3_BIN/rebar3 ]]
+then
+    export PATH="$PATH:$REBAR3_BIN"
+fi
+
 RBENV_ROOT="$HOME/.rbenv"
 if [[ -d "$RBENV_ROOT/bin" ]]
 then
