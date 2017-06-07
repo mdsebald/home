@@ -1,3 +1,6 @@
 [submodule "dot-vim/pack/lbakken/start/vim-erlang-compiler"]
 	path = dot-vim/pack/lbakken/start/vim-erlang-compiler
 	url = https://github.com/vim-erlang/vim-erlang-compiler.git
+[submodule "dot-vim/pack/lbakken/start/vim-erlang-tags"]
+	path = dot-vim/pack/lbakken/start/vim-erlang-tags
+	url = https://github.com/vim-erlang/vim-erlang-tags.git

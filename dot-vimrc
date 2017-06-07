@@ -61,6 +61,8 @@ set secure
 runtime set_utf8.vim
 set nobomb
 
+let g:netrw_liststyle = 3
+
 autocmd FileType dosbatch set encoding=latin1
 autocmd FileType dosbatch set fileencoding=latin1
 

@@ -18,13 +18,13 @@ then
     export PATH="$PATH:$HOME/go/bin"
 fi
 
-REBAR3_BIN="$HOME/.cache/rebar3/bin"
+declare -r REBAR3_BIN="$HOME/.cache/rebar3/bin"
 if [[ -x $REBAR3_BIN/rebar3 ]]
 then
     export PATH="$PATH:$REBAR3_BIN"
 fi
 
-RBENV_ROOT="$HOME/.rbenv"
+declare -r RBENV_ROOT="$HOME/.rbenv"
 if [[ -d "$RBENV_ROOT/bin" ]]
 then
     export RBENV_ROOT
@@ -32,7 +32,7 @@ then
     eval "$(rbenv init -)"
 fi
 
-PYENV_ROOT="$HOME/.pyenv"
+declare -r PYENV_ROOT="$HOME/.pyenv"
 if [[ -d "$PYENV_ROOT/bin" ]]
 then
     export PYENV_ROOT
@@ -43,6 +43,12 @@ fi
 if [[ -d $HOME/perl5 ]]
 then
     eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"
+fi
+
+declare -r KIEX="$HOME/.kiex/scripts/kiex"
+if [[ -s $KIEX ]]
+then
+    source "$KIEX"
 fi
 
 # If not running interactively, don't do anything past this point

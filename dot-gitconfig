@@ -49,3 +49,4 @@
 [cola]
 	fontdiff = Source Code Pro,10,-1,5,50,0,0,0,0,0
 	tabwidth = 4
+	spellcheck = false
