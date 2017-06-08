@@ -1,9 +1,24 @@
+export CFLAGS="-DOPENSSL_NO_CHACHA=1"
 KERL_BASE_DIR=/home/erlang
 KERL_DOWNLOAD_DIR=/home/erlang/archives
 KERL_BUILD_DIR=/home/erlang/builds
 KERL_GIT_DIR=/home/erlang/gits
 KERL_DEFAULT_INSTALL_DIR=/home/erlang/installs
 KERL_ENABLE_PROMPT=YES
-KERL_CONFIGURE_DISABLE_APPLICATIONS='odbc debugger wx'
-KERL_CONFIGURE_OPTIONS='--enable-hipe --enable-smp-support --enable-threads --enable-kernel-poll --without-odbc --without-wx'
-# KERL_CONFIGURE_OPTIONS='--enable-hipe --enable-smp-support --enable-threads --enable-kernel-poll --without-odbc --without-termcap'
+KERL_CONFIGURE_DISABLE_APPLICATIONS='odbc'
+KERL_CONFIGURE_OPTIONS='--enable-hipe --enable-smp-support --enable-threads --enable-kernel-poll --without-odbc --with-ssl=/usr/lib/openssl-1.0 --with-ssl-incl=/usr/include/openssl-1.0'
+
+# NB:
+# pacman -S openssl-1.0
+# cd /usr/lib/openssl-1.0 && ln -vsf /usr/lib/openssl-1.0 lib
+# cd /usr/include/openssl-1.0 && ln -vsf /usr/include/openssl-1.0 include
+#
+#   --with-ssl=PATH         specify location of OpenSSL include and lib
+#   --with-ssl-incl=PATH    location of OpenSSL include dir, if different than
+#                           specified by --with-ssl=PATH
+#   --with-ssl-rpath=yes|no|PATHS
+#                           runtime library path for OpenSSL. Default is 'yes',
+#                           which equates to a number of standard locations. If
+#                           'no', then no runtime library paths will be used.
+#                           Anything else should be a comma separated list of
+#                           paths.
