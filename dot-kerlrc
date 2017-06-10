@@ -1,19 +1,17 @@
 declare -r UNAME="$(uname)"
 
 KERL_ENABLE_PROMPT=YES
+
 if [[ $UNAME == Darwin ]]
 then
-    # https://gist.github.com/binarytemple/4c92451828e98dc61d0a
-    export CFLAGS="-DOPENSSL_NO_EC=1"
 	KERL_BASE_DIR="$HOME/erlang"
 	KERL_DOWNLOAD_DIR="$HOME/erlang/archives"
 	KERL_BUILD_DIR="$HOME/erlang/builds"
 	KERL_GIT_DIR="$HOME/erlang/gits"
 	KERL_DEFAULT_INSTALL_DIR="$HOME/erlang/installs"
-    KERL_CONFIGURE_OPTIONS='--disable-hipe --enable-smp-support --enable-threads --enable-kernel-poll --enable-darwin-64bit --with-ssl=/usr/local'
+    KERL_CONFIGURE_OPTIONS='--disable-hipe --enable-smp-support --enable-threads --enable-kernel-poll --enable-darwin-64bit'
 else
 	export CFLAGS="-DOPENSSL_NO_CHACHA=1"
-	# export XDG_CONFIG_HOME=/home/lbakken/repos/rmq
 	KERL_BASE_DIR=/home/erlang
 	KERL_DOWNLOAD_DIR=/home/erlang/archives
 	KERL_BUILD_DIR=/home/erlang/builds
@@ -23,6 +21,7 @@ else
 	KERL_CONFIGURE_OPTIONS='--enable-hipe --enable-smp-support --enable-threads --enable-kernel-poll --without-odbc --with-ssl=/usr/lib/openssl-1.0 --with-ssl-incl=/usr/include/openssl-1.0'
 fi
 # NB: Arch Linux
+# export XDG_CONFIG_HOME=/home/lbakken/repos/rmq
 # pacman -S openssl-1.0
 # cd /usr/lib/openssl-1.0 && ln -vsf /usr/lib/openssl-1.0 lib
 # cd /usr/include/openssl-1.0 && ln -vsf /usr/include/openssl-1.0 include

@@ -54,10 +54,11 @@ fi
 # If not running interactively, don't do anything past this point
 [[ $- != *i* ]] && return
 
-HISTCONTROL=ignoreboth
-HISTSIZE=16384
-HISTFILESIZE=16384
+export HISTCONTROL=ignoreboth
+export HISTSIZE=16384
+export HISTFILESIZE=
 
+shopt -s histappend
 shopt -s checkwinsize
 
 if [[ $MSYSTEM == 'MINGW64' ]]
