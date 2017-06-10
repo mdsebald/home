@@ -115,6 +115,8 @@ then
     [[ -f $git_cmpl  ]] && source $git_cmpl
     git_cmpl=/etc/bash_completion.d/git
     [[ -f $git_cmpl  ]] && source $git_cmpl
+    git_cmpl=/usr/local/etc/bash_completion.d/git-completion.bash
+    [[ -f $git_cmpl  ]] && source $git_cmpl
 
     git_ps1=/usr/share/git/completion/git-prompt.sh
     [[ -f $git_ps1  ]] && source $git_ps1
@@ -123,6 +125,8 @@ then
     git_ps1="$HOME/.git-prompt.sh"
     [[ -f $git_ps1  ]] && source $git_ps1
     git_ps1=/etc/bash_completion.d/git-prompt
+    [[ -f $git_ps1  ]] && source $git_ps1
+    git_ps1=/usr/local/etc/bash_completion.d/git-prompt.sh
     [[ -f $git_ps1  ]] && source $git_ps1
 fi
 

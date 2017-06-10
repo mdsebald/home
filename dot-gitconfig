@@ -1,5 +1,5 @@
 [include]
-    path = /home/lbakken/.gitconfig_custom
+    path = %%HOME%%/.gitconfig_custom
 [user]
 	name = Luke Bakken
 	email = luke@bakken.io
@@ -8,7 +8,7 @@
 	autocrlf = input
 	safecrlf = true
 	filemode = true
-	excludesfile = /home/lbakken/.gitignore_global
+	excludesfile = %%HOME%%/.gitignore_global
 	editor = vim
 [color]
 	ui = true
@@ -42,11 +42,3 @@
 	gpgsign = true
 [url "https://"]
     insteadOf = git://
-[gui]
-	fontui = -family \"Noto Sans\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
-	fontdiff = -family \"Source Code Pro\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
-	tabsize = 4
-[cola]
-	fontdiff = Source Code Pro,10,-1,5,50,0,0,0,0,0
-	tabwidth = 4
-	spellcheck = false

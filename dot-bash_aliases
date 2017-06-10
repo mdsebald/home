@@ -2,6 +2,11 @@ alias lynx='lynx -nopause'
 alias ll='ls -la'
 alias et='erltags --ignore _rel'
 
+if hash gmake
+then
+    alias make=gmake
+fi
+
 function start {
     if [[ -n $DISPLAY ]]
     then
