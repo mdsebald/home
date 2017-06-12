@@ -1,10 +1,5 @@
 declare -r UNAME="$(uname)"
 
-KERL_BASE_DIR=/home/erlang
-KERL_DOWNLOAD_DIR=/home/erlang/archives
-KERL_BUILD_DIR=/home/erlang/builds
-KERL_GIT_DIR=/home/erlang/gits
-KERL_DEFAULT_INSTALL_DIR=/home/erlang/installs
 KERL_ENABLE_PROMPT=YES
 
 if [[ $UNAME == Darwin ]]

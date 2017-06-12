@@ -9,9 +9,8 @@ if has('win32') || has('win64')
     " NO-OP
 else
     colorscheme solarized
-    set background=light
-    " TODO OSX
-    " set clipboard+=unnamedplus
+    set background=dark
+    set clipboard+=unnamedplus
 endif
 
 set nu
