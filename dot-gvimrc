@@ -9,6 +9,6 @@ elseif has('macunix')
     set guifont=Source\ Code\ Pro:h14
     set background=light
 else
-    set guifont=Source\ Code\ Pro 12
+    set guifont=Source\ Code\ Pro\ 12
     set background=dark
 endif
