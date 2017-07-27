@@ -44,6 +44,7 @@ abcde_clean:
 	@rm -vf $(HOMEDIR)/.abcde.conf
 	@rm -vf $(HOMEDIR)/.abcde-lame.conf
 
+.PHONY: clean vim_clean bash_clean kerl_clean tmux_clean git_clean xorg_clean gemrc_clean abcde_clean
 clean: vim_clean bash_clean kerl_clean tmux_clean git_clean xorg_clean gemrc_clean abcde_clean
 
 vimdir: $(PROJDIR)/dot-vim/colors/solarized.vim $(PROJDIR)/dot-vim/set_utf8.vim $(HOMEDIR)/.vim
@@ -91,10 +92,10 @@ $(HOMEDIR)/.tmux.conf:
 git: $(HOMEDIR)/.gitconfig $(HOMEDIR)/.gitignore_global $(HOMEDIR)/.gitconfig_custom
 $(HOMEDIR)/.gitconfig:
 	sed -e 's!%%HOME%%!$(HOMEDIR)!' $(PROJDIR)/dot-gitconfig > $(HOMEDIR)/.gitconfig
-$(HOMEDIR)/.gitconfig_custom:
-	ln -vsf $(PROJDIR)/dot-gitconfig-$(HOSTNAME) $(HOMEDIR)/.gitconfig_custom
 $(HOMEDIR)/.gitignore_global:
 	ln -vsf $(PROJDIR)/dot-gitignore_global $(HOMEDIR)/.gitignore_global
+$(HOMEDIR)/.gitconfig_custom:
+	ln -vsf $(PROJDIR)/dot-gitconfig-$(HOSTNAME) $(HOMEDIR)/.gitconfig_custom
 
 gemrc: $(HOMEDIR)/.gemrc
 $(HOMEDIR)/.gemrc:
