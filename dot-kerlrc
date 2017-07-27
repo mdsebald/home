@@ -4,22 +4,19 @@ KERL_ENABLE_PROMPT=YES
 
 if [[ $UNAME == Darwin ]]
 then
-	KERL_BASE_DIR="$HOME/Development/erlang"
-	KERL_DOWNLOAD_DIR="$HOME/Development/erlang/archives"
-	KERL_BUILD_DIR="$HOME/Development/erlang/builds"
-	KERL_GIT_DIR="$HOME/Development/erlang/gits"
-	KERL_DEFAULT_INSTALL_DIR="$HOME/Development/erlang/installs"
     KERL_CONFIGURE_OPTIONS='--disable-hipe --enable-smp-support --enable-threads --enable-kernel-poll --enable-darwin-64bit'
 else
 	export CFLAGS="-DOPENSSL_NO_CHACHA=1"
-	KERL_BASE_DIR=/home/erlang
-	KERL_DOWNLOAD_DIR=/home/erlang/archives
-	KERL_BUILD_DIR=/home/erlang/builds
-	KERL_GIT_DIR=/home/erlang/gits
-	KERL_DEFAULT_INSTALL_DIR=/home/erlang/installs
     KERL_CONFIGURE_DISABLE_APPLICATIONS='odbc'
 	KERL_CONFIGURE_OPTIONS='--enable-hipe --enable-smp-support --enable-threads --enable-kernel-poll --without-odbc --with-ssl=/usr/lib/openssl-1.0 --with-ssl-incl=/usr/include/openssl-1.0'
 fi
+
+KERL_BASE_DIR="$HOME/Development/erlang"
+KERL_DOWNLOAD_DIR="$HOME/Development/erlang/archives"
+KERL_BUILD_DIR="$HOME/Development/erlang/builds"
+KERL_GIT_DIR="$HOME/Development/erlang/gits"
+KERL_DEFAULT_INSTALL_DIR="$HOME/Development/erlang/installs"
+
 # NB: Arch Linux
 # export XDG_CONFIG_HOME=/home/lbakken/repos/rmq
 # pacman -S openssl-1.0
