@@ -6,9 +6,9 @@ if [[ $UNAME == Darwin ]]
 then
     KERL_CONFIGURE_OPTIONS='--disable-hipe --enable-smp-support --enable-threads --enable-kernel-poll --enable-darwin-64bit'
 else
-	export CFLAGS="-DOPENSSL_NO_CHACHA=1"
+    export CFLAGS="-DOPENSSL_NO_CHACHA=1"
     KERL_CONFIGURE_DISABLE_APPLICATIONS='odbc'
-	KERL_CONFIGURE_OPTIONS='--enable-hipe --enable-smp-support --enable-threads --enable-kernel-poll --without-odbc --with-ssl=/usr/lib/openssl-1.0 --with-ssl-incl=/usr/include/openssl-1.0'
+    KERL_CONFIGURE_OPTIONS='--enable-hipe --enable-smp-support --enable-threads --enable-kernel-poll --without-odbc --with-ssl=/usr/lib/openssl-1.0 --with-ssl-incl=/usr/include/openssl-1.0'
 fi
 
 KERL_BASE_DIR="$HOME/Development/erlang"
