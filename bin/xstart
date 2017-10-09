@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+declare logdir="$HOME/log"
+declare logfile="$logdir/xstart.log"
+declare errfile="$logdir/xstart-err.log"
+mkdir -vp "$logdir"
+
+setxkbmap_bin="$(which setxkbmap)"
+xkbcomp_bin="$(which xkbcomp)"
+xkbcomp_cfg="$HOME/.xkb"
+if [[ -x $setxkbmap_bin && -x $xkbcomp_bin && -d $xkbcomp_cfg ]]
+then
+    "$setxkbmap_bin" -I"$HOME/.xkb" -option "" robm dvorak-robm -print | "$xkbcomp_bin" -I"$HOME"/.xkb - "$DISPLAY" > "$logfile" 2> "$errfile"
+fi

@@ -33,6 +33,9 @@ git_clean:
 	@rm -vf $(HOMEDIR)/.gitignore_global
 
 xorg_clean:
+	@rm -vf $(HOME_BIN)/xstart
+	@rm -vf $(HOMEDIR)/.xkb
+	@rm -vf $(HOMEDIR)/.config/autostart/xstart.desktop
 	@rm -vf $(HOMEDIR)/.xinitrc
 	@rm -vf $(HOMEDIR)/.Xresources
 	@rm -vf $(HOMEDIR)/.Xresources_custom
@@ -77,7 +80,7 @@ $(HOMEDIR)/.bash_profile:
 
 kerl: $(HOME_BIN)/kerl
 $(HOME_BIN)/kerl:
-	mkdir -p $(HOME_BIN)
+	mkdir -vp $(HOME_BIN)
 	curl -o $(HOME_BIN)/kerl https://raw.githubusercontent.com/kerl/kerl/master/kerl
 	chmod 755 $(HOME_BIN)/kerl
 
@@ -101,7 +104,7 @@ gemrc: $(HOMEDIR)/.gemrc
 $(HOMEDIR)/.gemrc:
 	ln -vsf $(PROJDIR)/dot-gemrc $(HOMEDIR)/.gemrc
 
-xorg: $(HOMEDIR)/.xinitrc $(HOMEDIR)/.Xresources $(HOMEDIR)/.Xresources_custom
+xorg: $(HOMEDIR)/.xinitrc $(HOMEDIR)/.Xresources $(HOMEDIR)/.Xresources_custom $(HOMEDIR)/.xkb $(HOME_BIN)/xstart $(HOMEDIR)/.config/autostart/xstart.desktop
 $(HOMEDIR)/.Xresources:
 	ln -vsf $(PROJDIR)/dot-Xresources $(HOMEDIR)/.Xresources
 $(HOMEDIR)/.Xresources_custom:
@@ -109,6 +112,14 @@ $(HOMEDIR)/.Xresources_custom:
 	xrdb -merge $(HOMEDIR)/.Xresources
 $(HOMEDIR)/.xinitrc:
 	ln -vsf $(PROJDIR)/dot-xinitrc $(HOMEDIR)/.xinitrc
+$(HOMEDIR)/.xkb:
+	ln -vsf $(PROJDIR)/dot-xkb $(HOMEDIR)/.xkb
+$(HOME_BIN)/xstart:
+	mkdir -vp $(HOME_BIN)
+	ln -vsf $(PROJDIR)/bin/xstart $(HOME_BIN)/xstart
+$(HOMEDIR)/.config/autostart/xstart.desktop:
+	[ -f $(PROJDIR)/dot-config/autostart/xstart.desktop-$(HOSTNAME) ] && \
+		ln -vsf $(PROJDIR)/dot-config/autostart/xstart.desktop-$(HOSTNAME) $(HOMEDIR)/.config/autostart/xstart.desktop
 
 abcde: $(HOMEDIR)/.abcde.conf $(HOMEDIR)/.abcde-lame.conf
 $(HOMEDIR)/.abcde.conf:
