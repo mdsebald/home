@@ -1,0 +1,17 @@
+#!/usr/bin/env escript
+%% -*- erlang -*-
+%%! -smp enable -sname urlencode
+main([String]) ->
+    try
+        io:format("~s\n", [http_uri:encode(String)])
+    catch
+        Class:Error ->
+            io:format(standard_error, "[ERROR: ~p ~p\n", [Class, Error]),
+            usage()
+    end;
+main(_) ->
+    usage().
+
+usage() ->
+    io:format("usage: urlencode string\n"),
+    halt(1).
