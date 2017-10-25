@@ -5,8 +5,11 @@ HOME_BIN := $(HOMEDIR)/bin
 
 .PHONY: all osx
 
-all: vimdir vimrc gvimrc bash kerl kerlrc tmux git xorg gemrc abcde
-osx: vimdir vimrc gvimrc bash kerl kerlrc tmux git gemrc
+all: misc vimdir vimrc gvimrc bash kerl kerlrc tmux git xorg gemrc abcde
+osx: misc vimdir vimrc gvimrc bash kerl kerlrc tmux git gemrc
+
+misc_clean:
+	@rm -vf $(HOME_BIN)/urlencode
 
 vim_clean:
 	@rm -vf $(PROJDIR)/dot-vim/colors/solarized.vim
@@ -47,8 +50,15 @@ abcde_clean:
 	@rm -vf $(HOMEDIR)/.abcde.conf
 	@rm -vf $(HOMEDIR)/.abcde-lame.conf
 
-.PHONY: clean vim_clean bash_clean kerl_clean tmux_clean git_clean xorg_clean gemrc_clean abcde_clean
-clean: vim_clean bash_clean kerl_clean tmux_clean git_clean xorg_clean gemrc_clean abcde_clean
+.PHONY: clean misc_clean vim_clean bash_clean kerl_clean tmux_clean git_clean xorg_clean gemrc_clean abcde_clean
+clean: misc_clean vim_clean bash_clean kerl_clean tmux_clean git_clean xorg_clean gemrc_clean abcde_clean
+
+$(HOME_BIN):
+	mkdir -vp $(HOME_BIN)
+
+misc: $(HOME_BIN)/urlencode
+$(HOME_BIN)/urlencode: $(HOME_BIN)
+	ln -vsf $(PROJDIR)/bin/urlencode $(HOME_BIN)/urlencode
 
 vimdir: $(PROJDIR)/dot-vim/colors/solarized.vim $(PROJDIR)/dot-vim/set_utf8.vim $(HOMEDIR)/.vim
 $(PROJDIR)/dot-vim/colors/solarized.vim:
@@ -79,8 +89,7 @@ $(HOMEDIR)/.bash_profile:
 	ln -vsf $(PROJDIR)/dot-bash_profile $(HOMEDIR)/.bash_profile
 
 kerl: $(HOME_BIN)/kerl
-$(HOME_BIN)/kerl:
-	mkdir -vp $(HOME_BIN)
+$(HOME_BIN)/kerl: $(HOME_BIN)
 	curl -o $(HOME_BIN)/kerl https://raw.githubusercontent.com/kerl/kerl/master/kerl
 	chmod 755 $(HOME_BIN)/kerl
 
@@ -114,8 +123,7 @@ $(HOMEDIR)/.xinitrc:
 	ln -vsf $(PROJDIR)/dot-xinitrc $(HOMEDIR)/.xinitrc
 $(HOMEDIR)/.xkb:
 	ln -vsf $(PROJDIR)/dot-xkb $(HOMEDIR)/.xkb
-$(HOME_BIN)/xstart:
-	mkdir -vp $(HOME_BIN)
+$(HOME_BIN)/xstart: $(HOME_BIN)
 	ln -vsf $(PROJDIR)/bin/xstart $(HOME_BIN)/xstart
 $(HOMEDIR)/.config/autostart/xstart.desktop:
 	[ -f $(PROJDIR)/dot-config/autostart/xstart.desktop-$(HOSTNAME) ] && \

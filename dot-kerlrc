@@ -8,11 +8,15 @@ then
 else
     # NB: to remove odbc
     # KERL_CONFIGURE_DISABLE_APPLICATIONS='odbc'
-    # KERL_CONFIGURE_OPTIONS='--enable-hipe --enable-smp-support --enable-threads --enable-kernel-poll --without-odbc --with-ssl=/usr/lib/openssl-1.0 --with-ssl-incl=/usr/include/openssl-1.0'
-    export CFLAGS='-DOPENSSL_NO_CHACHA=1 -I/usr/include/openssl-1.0'
-    export LDFLAGS='-I/usr/lib/openssl-1.0 -lssl'
-    export PKG_CONFIG_PATH='/usr/lib/openssl-1.0/pkgconfig'
-    KERL_CONFIGURE_OPTIONS='--enable-hipe --enable-smp-support --enable-threads --enable-kernel-poll --with-ssl=/usr/lib/openssl-1.0 --with-ssl-incl=/usr/include/openssl-1.0'
+
+    # NB: for pre-crypto 4.0
+    # export CFLAGS='-DOPENSSL_NO_CHACHA=1 -I/usr/include/openssl-1.0'
+    # export LDFLAGS='-I/usr/lib/openssl-1.0 -lssl'
+    # export PKG_CONFIG_PATH='/usr/lib/openssl-1.0/pkgconfig'
+    # KERL_CONFIGURE_OPTIONS='--enable-hipe --enable-smp-support --enable-threads --enable-kernel-poll --with-ssl=/usr/lib/openssl-1.0 --with-ssl-rpath=no'
+    #
+    # NB: for post-crypto 4.0
+    KERL_CONFIGURE_OPTIONS='--enable-hipe --enable-smp-support --enable-threads --enable-kernel-poll'
 fi
 
 KERL_BASE_DIR="$HOME/Development/erlang"
