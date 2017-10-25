@@ -51,6 +51,11 @@ then
     source "$KIEX"
 fi
 
+if [[ -s /usr/local/etc/xml/catalog ]]
+then
+    export XML_CATALOG_FILES='/usr/local/etc/xml/catalog'
+fi
+
 # If not running interactively, don't do anything past this point
 [[ $- != *i* ]] && return
 

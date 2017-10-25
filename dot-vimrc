@@ -8,9 +8,13 @@ filetype plugin on
 if has('win32') || has('win64')
     " NO-OP
 else
-    colorscheme solarized
-    set background=dark
-    set clipboard+=unnamedplus
+    if has('unix')
+        colorscheme solarized
+        set background=light
+        if ! has('mac')
+            set clipboard+=unnamedplus
+        endif
+    endif
 endif
 
 set nu
