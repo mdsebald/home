@@ -118,7 +118,7 @@ $(HOMEDIR)/.Xresources:
 	ln -vsf $(PROJDIR)/dot-Xresources $(HOMEDIR)/.Xresources
 $(HOMEDIR)/.Xresources_custom:
 	ln -vsf $(PROJDIR)/dot-Xresources-$(HOSTNAME) $(HOMEDIR)/.Xresources_custom
-	xrdb -merge $(HOMEDIR)/.Xresources
+	xrdb -merge $(HOMEDIR)/.Xresources || echo 'xrdb is not installed!'
 $(HOMEDIR)/.xinitrc:
 	ln -vsf $(PROJDIR)/dot-xinitrc $(HOMEDIR)/.xinitrc
 $(HOMEDIR)/.xkb:
@@ -126,8 +126,8 @@ $(HOMEDIR)/.xkb:
 $(HOME_BIN)/xstart: $(HOME_BIN)
 	ln -vsf $(PROJDIR)/bin/xstart $(HOME_BIN)/xstart
 $(HOMEDIR)/.config/autostart/xstart.desktop:
-	[ -f $(PROJDIR)/dot-config/autostart/xstart.desktop-$(HOSTNAME) ] && \
-		ln -vsf $(PROJDIR)/dot-config/autostart/xstart.desktop-$(HOSTNAME) $(HOMEDIR)/.config/autostart/xstart.desktop
+	[ -f "$(PROJDIR)/dot-config/autostart/xstart.desktop-$(HOSTNAME)" ] && \
+		ln -vsf $(PROJDIR)/dot-config/autostart/xstart.desktop-$(HOSTNAME) $(HOMEDIR)/.config/autostart/xstart.desktop || echo 'No xstart.desktop for $(HOSTNAME)'
 
 abcde: $(HOMEDIR)/.abcde.conf $(HOMEDIR)/.abcde-lame.conf
 $(HOMEDIR)/.abcde.conf:
