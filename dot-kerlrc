@@ -19,11 +19,11 @@ else
     KERL_CONFIGURE_OPTIONS='--enable-hipe --enable-smp-support --enable-threads --enable-kernel-poll'
 fi
 
-KERL_BASE_DIR="$HOME/Development/erlang"
-KERL_DOWNLOAD_DIR="$HOME/Development/erlang/archives"
-KERL_BUILD_DIR="$HOME/Development/erlang/builds"
-KERL_GIT_DIR="$HOME/Development/erlang/gits"
-KERL_DEFAULT_INSTALL_DIR="$HOME/Development/erlang/installs"
+KERL_BASE_DIR="$HOME/development/erlang"
+KERL_DOWNLOAD_DIR="$HOME/development/erlang/archives"
+KERL_BUILD_DIR="$HOME/development/erlang/builds"
+KERL_GIT_DIR="$HOME/development/erlang/gits"
+KERL_DEFAULT_INSTALL_DIR="$HOME/development/erlang/installs"
 
 # NB: Arch Linux
 # export XDG_CONFIG_HOME=/home/lbakken/repos/rmq
