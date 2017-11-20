@@ -10,7 +10,7 @@ if has('win32') || has('win64')
 else
     if has('unix')
         colorscheme solarized
-        set background=light
+        set background=dark
         if ! has('mac')
             set clipboard+=unnamedplus
         endif

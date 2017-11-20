@@ -4,3 +4,6 @@
 [submodule "dot-vim/pack/lbakken/start/vim-erlang-tags"]
 	path = dot-vim/pack/lbakken/start/vim-erlang-tags
 	url = https://github.com/vim-erlang/vim-erlang-tags.git
+[submodule "kerl"]
+	path = kerl
+	url = https://github.com/kerl/kerl.git

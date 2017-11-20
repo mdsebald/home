@@ -5,8 +5,8 @@ HOME_BIN := $(HOMEDIR)/bin
 
 .PHONY: all osx
 
-all: misc vimdir vimrc gvimrc bash kerl kerlrc tmux git xorg gemrc abcde
-osx: misc vimdir vimrc gvimrc bash kerl kerlrc tmux git gemrc
+all: misc vimdir vimrc gvimrc bash kerl tmux git xorg gemrc abcde
+osx: misc vimdir vimrc gvimrc bash kerl tmux git gemrc
 
 misc_clean:
 	@rm -vf $(HOME_BIN)/urlencode
@@ -88,12 +88,10 @@ $(HOMEDIR)/.bash_aliases:
 $(HOMEDIR)/.bash_profile:
 	ln -vsf $(PROJDIR)/dot-bash_profile $(HOMEDIR)/.bash_profile
 
-kerl: $(HOME_BIN)/kerl
+kerl: $(HOME_BIN)/kerl $(HOMEDIR)/.kerlrc
 $(HOME_BIN)/kerl: $(HOME_BIN)
-	curl -o $(HOME_BIN)/kerl https://raw.githubusercontent.com/kerl/kerl/master/kerl
-	chmod 755 $(HOME_BIN)/kerl
-
-kerlrc: $(HOMEDIR)/.kerlrc
+	git submodule update --init
+	ln -vsf $(PROJDIR)/kerl/kerl $(HOME_BIN)/kerl
 $(HOMEDIR)/.kerlrc:
 	ln -vsf $(PROJDIR)/dot-kerlrc $(HOMEDIR)/.kerlrc
 
