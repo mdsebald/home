@@ -10,6 +10,7 @@ osx: misc vimdir vimrc gvimrc bash kerl tmux git gemrc
 
 misc_clean:
 	@rm -vf $(HOME_BIN)/urlencode
+	@rm -vf $(HOME_BIN)/rabbitmqadmin
 
 vim_clean:
 	@rm -vf $(PROJDIR)/dot-vim/colors/solarized.vim
@@ -56,9 +57,13 @@ clean: misc_clean vim_clean bash_clean kerl_clean tmux_clean git_clean xorg_clea
 $(HOME_BIN):
 	mkdir -vp $(HOME_BIN)
 
-misc: $(HOME_BIN)/urlencode
+misc: $(HOME_BIN)/urlencode $(HOME_BIN)/rabbitmqadmin
 $(HOME_BIN)/urlencode: $(HOME_BIN)
 	ln -vsf $(PROJDIR)/bin/urlencode $(HOME_BIN)/urlencode
+$(HOME_BIN)/rabbitmqadmin: $(HOME_BIN)
+	curl -Lo $(HOME_BIN)/rabbitmqadmin \
+		https://raw.githubusercontent.com/rabbitmq/rabbitmq-management/master/bin/rabbitmqadmin
+	chmod 755 $(HOME_BIN)/rabbitmqadmin
 
 vimdir: $(PROJDIR)/dot-vim/colors/solarized.vim $(PROJDIR)/dot-vim/set_utf8.vim $(HOMEDIR)/.vim
 $(PROJDIR)/dot-vim/colors/solarized.vim:
