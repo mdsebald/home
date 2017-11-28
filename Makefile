@@ -5,7 +5,7 @@ HOME_BIN := $(HOMEDIR)/bin
 
 .PHONY: all osx
 
-all: misc vimdir vimrc gvimrc bash kerl tmux git xorg gemrc abcde
+all: misc vimdir vimrc gvimrc bash kerl tmux git xorg gemrc abcde pulse
 osx: misc vimdir vimrc gvimrc bash kerl tmux git gemrc
 
 misc_clean:
@@ -51,8 +51,11 @@ abcde_clean:
 	@rm -vf $(HOMEDIR)/.abcde.conf
 	@rm -vf $(HOMEDIR)/.abcde-lame.conf
 
-.PHONY: clean misc_clean vim_clean bash_clean kerl_clean tmux_clean git_clean xorg_clean gemrc_clean abcde_clean
-clean: misc_clean vim_clean bash_clean kerl_clean tmux_clean git_clean xorg_clean gemrc_clean abcde_clean
+pulse_clean:
+	@rm -vf $(HOMEDIR)/.config/pulse/default.pa
+
+.PHONY: clean misc_clean vim_clean bash_clean kerl_clean tmux_clean git_clean xorg_clean gemrc_clean abcde_clean pulse_clean
+clean: misc_clean vim_clean bash_clean kerl_clean tmux_clean git_clean xorg_clean gemrc_clean abcde_clean pulse_clean
 
 $(HOME_BIN):
 	mkdir -vp $(HOME_BIN)
@@ -137,3 +140,10 @@ $(HOMEDIR)/.abcde.conf:
 	ln -vsf $(PROJDIR)/dot-abcde.conf $(HOMEDIR)/.abcde.conf
 $(HOMEDIR)/.abcde-lame.conf:
 	ln -vsf $(PROJDIR)/dot-abcde-lame.conf $(HOMEDIR)/.abcde-lame.conf
+
+pulse: $(HOMEDIR)/.config/pulse/default.pa
+$(HOMEDIR)/.config/pulse:
+	mkdir -p $(HOMEDIR)/.config/pulse
+$(HOMEDIR)/.config/pulse/default.pa: $(HOMEDIR)/.config/pulse
+	[ -f "$(PROJDIR)/dot-config/pulse/default.pa-$(HOSTNAME)" ] && \
+		ln -vsf $(PROJDIR)/dot-config/pulse/default.pa-$(HOSTNAME) $(HOMEDIR)/.config/pulse/default.pa || echo 'No default.pa for $(HOSTNAME)'
