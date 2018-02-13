@@ -65,6 +65,7 @@ export HISTFILESIZE=
 
 shopt -s histappend
 shopt -s checkwinsize
+shopt -s direxpand
 
 if [[ $MSYSTEM == 'MINGW64' ]]
 then
