@@ -1,8 +1,10 @@
+/*
+transition: all 0.2s ease 0.2s !important;
+*/
 #main-window #PersonalToolbar {
   visibility: collapse !important;
   opacity:0 !important;
   margin-top: -23px !important;
-  transition: all 0.2s ease 0.2s !important;
 }
 
 /*
