@@ -10,11 +10,13 @@
 #main-window[title^="Firefox"] #PersonalToolbar,
 #main-window[title^="Firefox Nightly"] #PersonalToolbar,
 #main-window[title^="Nightly"] #PersonalToolbar {
- */
+
+transition: all 0.2s ease 0.2s !important;
+*/
+#main-window[title^="Firefox Nightly"] #PersonalToolbar,
 #main-window[title^="about:newtab"] #PersonalToolbar,
 #main-window[title^="New Tab"] #PersonalToolbar {
   visibility: visible !important;
   margin-top: 0px !important;
-  transition: all 0.2s ease 0.2s !important;
   opacity: 1 !important;
 }
