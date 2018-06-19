@@ -5,8 +5,8 @@ HOME_BIN := $(HOMEDIR)/bin
 
 .PHONY: all osx
 
-all: misc vimdir vimrc gvimrc bash kerl tmux git xorg gemrc abcde pulse
-osx: misc vimdir vimrc gvimrc bash kerl tmux git gemrc
+all: misc vimdir vimrc gvimrc bash kerl keychain tmux git xorg gemrc abcde pulse
+osx: misc vimdir vimrc gvimrc bash kerl keychain tmux git gemrc
 
 misc_clean:
 	@rm -vf $(HOME_BIN)/urlencode
@@ -27,6 +27,9 @@ bash_clean:
 kerl_clean:
 	@rm -vf $(HOME_BIN)/kerl
 	@rm -vf $(HOMEDIR)/.kerlrc
+
+keychain_clean:
+	@rm -vf $(HOME_BIN)/keychain
 
 tmux_clean:
 	@rm -vf $(HOMEDIR)/.tmux.conf
@@ -54,8 +57,8 @@ abcde_clean:
 pulse_clean:
 	@rm -vf $(HOMEDIR)/.config/pulse/default.pa
 
-.PHONY: clean misc_clean vim_clean bash_clean kerl_clean tmux_clean git_clean xorg_clean gemrc_clean abcde_clean pulse_clean
-clean: misc_clean vim_clean bash_clean kerl_clean tmux_clean git_clean xorg_clean gemrc_clean abcde_clean pulse_clean
+.PHONY: clean misc_clean vim_clean bash_clean kerl_clean keychain_clean tmux_clean git_clean xorg_clean gemrc_clean abcde_clean pulse_clean
+clean: misc_clean vim_clean bash_clean kerl_clean keychain_clean tmux_clean git_clean xorg_clean gemrc_clean abcde_clean pulse_clean
 
 $(HOME_BIN):
 	mkdir -vp $(HOME_BIN)
@@ -102,6 +105,11 @@ $(HOME_BIN)/kerl: $(HOME_BIN)
 	ln -vsf $(PROJDIR)/kerl/kerl $(HOME_BIN)/kerl
 $(HOMEDIR)/.kerlrc:
 	ln -vsf $(PROJDIR)/dot-kerlrc $(HOMEDIR)/.kerlrc
+
+keychain: $(HOME_BIN)/keychain
+$(HOME_BIN)/keychain: $(HOME_BIN)
+	git submodule update --init
+	ln -vsf $(PROJDIR)/keychain/keychain $(HOME_BIN)/keychain
 
 tmux: $(HOMEDIR)/.tmux.conf
 $(HOMEDIR)/.tmux.conf:

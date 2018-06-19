@@ -7,3 +7,6 @@
 [submodule "kerl"]
 	path = kerl
 	url = https://github.com/kerl/kerl.git
+[submodule "keychain"]
+	path = keychain
+	url = https://github.com/funtoo/keychain.git
