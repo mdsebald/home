@@ -168,5 +168,6 @@ fi
 
 if hash direnv 2>/dev/null
 then
+    # export DIRENV_LOG_FORMAT=
     eval "$(direnv hook bash)"
 fi
