@@ -157,11 +157,16 @@ then
     fi
 fi
 
-declare -r rtrc="$HOME/.riak-test-rc"
-if [[ -s $rtrc ]]
-then
-    source $rtrc
-fi
+# declare -r rtrc="$HOME/.riak-test-rc"
+# if [[ -s $rtrc ]]
+# then
+#     source $rtrc
+# fi
 
 # added by travis gem
-[[ -f $HOME/.travis/travis.sh ]] && source "$HOME/.travis/travis.sh"
+# [[ -f $HOME/.travis/travis.sh ]] && source "$HOME/.travis/travis.sh"
+
+if hash direnv 2>/dev/null
+then
+    eval "$(direnv hook bash)"
+fi
