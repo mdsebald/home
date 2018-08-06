@@ -11,7 +11,9 @@ else
     if has('unix')
         colorscheme solarized
         set background=dark
-        if ! has('mac')
+        if has('mac')
+            set background=light
+        else
             set clipboard+=unnamedplus
         endif
     endif
