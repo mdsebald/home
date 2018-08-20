@@ -10,3 +10,6 @@
 [submodule "keychain"]
 	path = keychain
 	url = https://github.com/funtoo/keychain.git
+[submodule "dot-vim/pack/lbakken/start/bats"]
+	path = dot-vim/pack/lbakken/start/bats
+	url = https://github.com/vim-scripts/bats.vim.git

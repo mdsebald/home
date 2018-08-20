@@ -171,3 +171,9 @@ then
     # export DIRENV_LOG_FORMAT=
     eval "$(direnv hook bash)"
 fi
+
+if [[ -d "$HOME/.sdkman" ]] && [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]]
+then
+    export SDKMAN_DIR="$HOME/.sdkman"
+    source "$SDKMAN_DIR/bin/sdkman-init.sh"
+fi
