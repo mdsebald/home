@@ -13,3 +13,6 @@
 [submodule "dot-vim/pack/lbakken/start/bats"]
 	path = dot-vim/pack/lbakken/start/bats
 	url = https://github.com/vim-scripts/bats.vim.git
+[submodule "dot-vim/pack/lbakken/start/vim-elixir"]
+	path = dot-vim/pack/lbakken/start/vim-elixir
+	url = https://github.com/elixir-lang/vim-elixir.git
