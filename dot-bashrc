@@ -56,6 +56,13 @@ then
     export XML_CATALOG_FILES='/usr/local/etc/xml/catalog'
 fi
 
+_bashrc_sdkman_init="$HOME/.sdkman/bin/sdkman-init.sh"
+if [[ -s $_bashrc_sdkman_init ]]
+then
+    source "$HOME/.sdkman/bin/sdkman-init.sh"
+fi
+unset _bashrc_sdkman_init
+
 # If not running interactively, don't do anything past this point
 [[ $- != *i* ]] && return
 
