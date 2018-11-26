@@ -33,6 +33,7 @@ set backupcopy=yes
 set nohls
 set noincsearch
 set nocindent
+set nofoldenable
 set backupdir=$HOME/tmp//,$TEMP//,/tmp//,.//
 set dir=$HOME/tmp//,$TEMP//,/tmp//,.//
 set viminfo='1000,f1,\"500,:1000,rA:,rB:,rD:,h
