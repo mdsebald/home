@@ -5,6 +5,8 @@ alias et='erltags --ignore _rel'
 if hash gmake 2>/dev/null
 then
     alias make=gmake
+else
+    alias gmake=make
 fi
 
 function start {
