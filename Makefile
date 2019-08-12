@@ -121,7 +121,7 @@ $(HOMEDIR)/.gitconfig:
 $(HOMEDIR)/.gitignore_global:
 	ln -vsf $(PROJDIR)/dot-gitignore_global $(HOMEDIR)/.gitignore_global
 $(HOMEDIR)/.gitconfig_custom:
-	ln -vsf $(PROJDIR)/dot-gitconfig-$(HOSTNAME) $(HOMEDIR)/.gitconfig_custom
+	-ln -vsf $(PROJDIR)/dot-gitconfig-$(HOSTNAME) $(HOMEDIR)/.gitconfig_custom
 
 gemrc: $(HOMEDIR)/.gemrc
 $(HOMEDIR)/.gemrc:
@@ -131,7 +131,7 @@ xorg: $(HOMEDIR)/.xinitrc $(HOMEDIR)/.Xresources $(HOMEDIR)/.Xresources_custom $
 $(HOMEDIR)/.Xresources:
 	ln -vsf $(PROJDIR)/dot-Xresources $(HOMEDIR)/.Xresources
 $(HOMEDIR)/.Xresources_custom:
-	ln -vsf $(PROJDIR)/dot-Xresources-$(HOSTNAME) $(HOMEDIR)/.Xresources_custom
+	-ln -vsf $(PROJDIR)/dot-Xresources-$(HOSTNAME) $(HOMEDIR)/.Xresources_custom
 	xrdb -merge $(HOMEDIR)/.Xresources || echo 'xrdb is not installed!'
 $(HOMEDIR)/.xinitrc:
 	ln -vsf $(PROJDIR)/dot-xinitrc $(HOMEDIR)/.xinitrc
