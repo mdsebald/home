@@ -5,8 +5,8 @@ HOME_BIN := $(HOMEDIR)/bin
 
 .PHONY: all osx
 
-all: misc vimdir vimrc gvimrc bash kerl keychain tmux git xorg gemrc abcde pulse
-osx: misc vimdir vimrc gvimrc bash kerl keychain tmux git gemrc
+all: misc vimdir vimrc gvimrc vim-erlang-tags bash kerl keychain tmux git xorg gemrc abcde pulse
+osx: misc vimdir vimrc gvimrc vim-erlang-tags bash kerl keychain tmux git gemrc
 
 misc_clean:
 	@rm -vf $(HOME_BIN)/urlencode
@@ -18,6 +18,7 @@ vim_clean:
 	@rm -vrf $(HOMEDIR)/.vim
 	@rm -vf $(HOMEDIR)/.vimrc
 	@rm -vf $(HOMEDIR)/.gvimrc
+	@rm -vf $(HOME_BIN)/vim-erlang-tags
 
 bash_clean:
 	@rm -vf $(HOMEDIR)/.bashrc
@@ -82,6 +83,11 @@ $(PROJDIR)/dot-vim/set_utf8.vim:
 
 $(HOMEDIR)/.vim:
 	ln -vsf $(PROJDIR)/dot-vim $(HOMEDIR)/.vim
+
+vim-erlang-tags: $(HOME_BIN)/vim-erlang-tags
+$(HOME_BIN)/vim-erlang-tags: $(HOME_BIN)
+	git submodule update --init
+	ln -vsf $(PROJDIR)/dot-vim/pack/lbakken/start/vim-erlang-tags/bin/vim_erlang_tags.erl $(HOME_BIN)/vim-erlang-tags
 
 vimrc: $(HOMEDIR)/.vimrc
 $(HOMEDIR)/.vimrc:
