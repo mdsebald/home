@@ -3,6 +3,7 @@ KERL_ENABLE_PROMPT=YES
 if [[ $(uname) == Darwin ]]
 then
     KERL_CONFIGURE_OPTIONS='--disable-hipe --enable-smp-support --enable-threads --enable-kernel-poll --enable-darwin-64bit'
+    export CFLAGS="-g -O3 -fstack-protector"
 else
     # NB: to remove odbc
     # KERL_CONFIGURE_DISABLE_APPLICATIONS='odbc'
