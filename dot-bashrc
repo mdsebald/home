@@ -67,8 +67,9 @@ unset _bashrc_sdkman_init
 [[ $- != *i* ]] && return
 
 export HISTCONTROL=ignoreboth
-export HISTSIZE=16384
-export HISTFILESIZE=
+export HISTSIZE=65536
+export HISTFILESIZE=65536
+export HISTFILE="$HOME/.bash_eternal_history"
 
 shopt -s histappend
 shopt -s checkwinsize
