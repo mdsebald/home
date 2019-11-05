@@ -45,21 +45,26 @@ set guicursor=a:blinkon0
 set wildignore+=*.pdf,*.o,*.obj,*.jpg,*.png,*.beam
 
 " dvorak
-map l s
-map s l
-map n k
-map k n
-map t j
-map j t
-map <C-W>j <C-W>t
-map <C-W>t <C-W>j
-map <C-W>k <C-W>n
-map <C-W>n <C-W>k
-map gj gt
-map gt gj
-map gk gn
-map gn gk
-set noremap
+nnoremap l s
+nnoremap s l
+nnoremap n k
+nnoremap k n
+nnoremap t j
+nnoremap j t
+xnoremap l s
+xnoremap s l
+xnoremap n k
+xnoremap k n
+xnoremap t j
+xnoremap j t
+nnoremap <C-W>j <C-W>t
+nnoremap <C-W>t <C-W>j
+nnoremap <C-W>k <C-W>n
+nnoremap <C-W>n <C-W>k
+nnoremap gj gt
+nnoremap gt gj
+nnoremap gk gn
+nnoremap gn gk
 set diffopt=filler,vertical
 
 set exrc
