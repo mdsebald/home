@@ -63,6 +63,8 @@ then
 fi
 unset _bashrc_sdkman_init
 
+export GPG_TTY="$(tty)"
+
 # If not running interactively, don't do anything past this point
 [[ $- != *i* ]] && return
 
