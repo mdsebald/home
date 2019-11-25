@@ -1,4 +1,5 @@
 KERL_ENABLE_PROMPT=YES
+KERL_CONFIGURE_DISABLE_APPLICATIONS='odbc'
 
 if [[ $(uname) == Darwin ]]
 then
