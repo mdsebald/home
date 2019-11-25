@@ -3,7 +3,8 @@ KERL_CONFIGURE_DISABLE_APPLICATIONS='odbc'
 
 if [[ $(uname) == Darwin ]]
 then
-    KERL_CONFIGURE_OPTIONS='--disable-hipe --enable-smp-support --enable-threads --enable-kernel-poll --enable-darwin-64bit'
+    # https://github.com/Homebrew/homebrew-core/blob/master/Formula/erlang.rb
+    KERL_CONFIGURE_OPTIONS="--disable-hipe --enable-darwin-64bit --enable-dynamic-ssl-lib --enable-kernel-poll --enable-sctp --enable-shared-zlib --enable-smp-support --enable-threads --enable-wx --with-ssl="$(brew --prefix openssl)" --without-docs"
     export CFLAGS="-g -O3 -fstack-protector"
 else
     # NB: to remove odbc
@@ -13,7 +14,7 @@ else
     # export CFLAGS='-DOPENSSL_NO_CHACHA=1 -I/usr/include/openssl-1.0'
     # export LDFLAGS='-I/usr/lib/openssl-1.0 -lssl'
     # export PKG_CONFIG_PATH='/usr/lib/openssl-1.0/pkgconfig'
-    # KERL_CONFIGURE_OPTIONS='--enable-hipe --enable-smp-support --enable-threads --enable-kernel-poll --with-ssl=/usr/lib/openssl-1.0 --with-ssl-rpath=no'
+    # KERL_CONFIGURE_OPTIONS='--without-docs --enable-hipe --enable-smp-support --enable-threads --enable-kernel-poll --with-ssl=/usr/lib/openssl-1.0 --with-ssl-rpath=no'
     #
     # NB: for post-crypto 4.0
     KERL_CONFIGURE_OPTIONS='--enable-hipe --enable-smp-support --enable-threads --enable-kernel-poll'
