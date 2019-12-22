@@ -1,5 +1,5 @@
 PROJDIR := $(realpath $(CURDIR))
-HOSTNAME := $(shell hostname | perl -pne 's/(.*?)\.local$$/lc($$1)/e')
+HOSTNAME := $(shell hostname | perl -pne 's/(.*?)\..*$$/lc($$1)/e')
 HOMEDIR := $(realpath $(HOME))
 HOME_BIN := $(HOMEDIR)/bin
 
