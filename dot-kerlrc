@@ -1,7 +1,7 @@
 KERL_ENABLE_PROMPT=YES
 KERL_CONFIGURE_DISABLE_APPLICATIONS='odbc'
 
-if [[ $(uname) == Darwin ]]
+if [ "x$(uname)" == 'xDarwin' ]
 then
     # https://github.com/Homebrew/homebrew-core/blob/master/Formula/erlang.rb
     KERL_CONFIGURE_OPTIONS="--disable-hipe --enable-darwin-64bit --enable-dynamic-ssl-lib --enable-kernel-poll --enable-sctp --enable-shared-zlib --enable-smp-support --enable-threads --enable-wx --with-ssl="$(brew --prefix openssl)" --without-docs"
