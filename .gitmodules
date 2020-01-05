@@ -16,3 +16,6 @@
 [submodule "dot-vim/pack/lbakken/start/vim-elixir"]
 	path = dot-vim/pack/lbakken/start/vim-elixir
 	url = https://github.com/elixir-lang/vim-elixir.git
+[submodule "dot-vim/pack/lbakken/start/vim-colors-solarized"]
+	path = dot-vim/pack/lbakken/start/vim-colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized.git
