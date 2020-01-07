@@ -5,18 +5,10 @@ filetype on
 filetype indent on
 filetype plugin on
 
-if has('win32') || has('win64')
-    " NO-OP
-else
-    if has('unix')
-        colorscheme solarized
-        set background=dark
-        if has('mac')
-            set background=light
-        else
-            set clipboard+=unnamedplus
-        endif
-    endif
+colorscheme solarized
+set background=dark
+if has('mac')
+    set background=light
 endif
 
 set nu
