@@ -5,11 +5,11 @@ filetype on
 filetype indent on
 filetype plugin on
 
-colorscheme solarized
 set background=dark
 if has('mac')
     set background=light
 endif
+colorscheme solarized
 
 set nu
 set ruler
