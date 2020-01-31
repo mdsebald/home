@@ -5,7 +5,7 @@
 	email = luke@bakken.io
 	useconfigonly = true
 [core]
-	autocrlf = true
+	autocrlf = false
 	safecrlf = true
 	filemode = true
 	excludesfile = %%HOME%%/.gitignore_global
