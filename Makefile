@@ -14,6 +14,7 @@ misc_clean:
 
 vim_clean:
 	@rm -vf $(PROJDIR)/dot-vim/colors/solarized.vim
+	@rm -vf $(PROJDIR)/dot-vim/colors/zenburn.vim
 	@rm -vf $(PROJDIR)/dot-vim/set_utf8.vim
 	@rm -vrf $(HOMEDIR)/.vim
 	@rm -vf $(HOMEDIR)/.vimrc
@@ -72,10 +73,14 @@ $(HOME_BIN)/rabbitmqadmin: $(HOME_BIN)
 		https://raw.githubusercontent.com/rabbitmq/rabbitmq-management/master/bin/rabbitmqadmin
 	chmod 755 $(HOME_BIN)/rabbitmqadmin
 
-vimdir: $(PROJDIR)/dot-vim/colors/solarized.vim $(PROJDIR)/dot-vim/set_utf8.vim $(HOMEDIR)/.vim
+vimdir: $(PROJDIR)/dot-vim/colors/zenburn.vim $(PROJDIR)/dot-vim/colors/solarized.vim $(PROJDIR)/dot-vim/set_utf8.vim $(HOMEDIR)/.vim
 $(PROJDIR)/dot-vim/colors/solarized.vim:
 	curl -Lo $(PROJDIR)/dot-vim/colors/solarized.vim \
 		https://raw.githubusercontent.com/altercation/vim-colors-solarized/master/colors/solarized.vim
+
+$(PROJDIR)/dot-vim/colors/zenburn.vim:
+	curl -Lo $(PROJDIR)/dot-vim/colors/zenburn.vim \
+		https://raw.githubusercontent.com/jnurmine/Zenburn/master/colors/zenburn.vim
 
 $(PROJDIR)/dot-vim/set_utf8.vim:
 	curl -Lo $(PROJDIR)/dot-vim/set_utf8.vim \
