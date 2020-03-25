@@ -5,11 +5,7 @@ filetype on
 filetype indent on
 filetype plugin on
 
-set background=dark
-if has('mac')
-    set background=light
-endif
-colorscheme solarized
+colorscheme zenburn
 
 set nu
 set ruler
