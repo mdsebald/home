@@ -3,13 +3,12 @@
 !-------------------------------------------------------------------------------
 ! Xft settings
 !-------------------------------------------------------------------------------
-Xft*antialias:              true
-Xft*autohint:               false
-! Xft*dpi:                  CUSTOM
-Xft*hinting:                true
-Xft*hintstyle:              hintslight
-Xft*lcdfilter:              lcddefault
-Xft*rgba:                   rgb
+Xft.antialias:              true
+Xft.autohint:               false
+Xft.hinting:                true
+Xft.hintstyle:              hintslight
+Xft.lcdfilter:              lcddefault
+Xft.rgba:                   rgb
 
 !-------------------------------------------------------------------------------
 ! URxvt settings
@@ -18,39 +17,41 @@ Xft*rgba:                   rgb
 ! http://pod.tst.eu/http://cvs.schmorp.de/rxvt-unicode/doc/rxvt.1.pod
 !-------------------------------------------------------------------------------
 
-URxvt*depth:                32
-URxvt*geometry:             90x30
-URxvt*transparent:          false
-URxvt*urgentOnBell:         false
-URxvt*visualBell:           false
-URxvt*loginShell:           true
-URxvt*saveLines:            4096
-URxvt*internalBorder:       3
-URxvt*lineSpace:            0
+URxvt.font:                 xft:Source Code Pro:size=10
+URxvt.boldFont:             xft:Source Code Pro:size=10
+URxvt.depth:                32
+URxvt.geometry:             90x30
+URxvt.transparent:          false
+URxvt.urgentOnBell:         false
+URxvt.visualBell:           false
+URxvt.loginShell:           true
+URxvt.saveLines:            4096
+URxvt.internalBorder:       3
+URxvt.lineSpace:            0
 
 ! Fonts
-URxvt*allow_bold:           false
-! URxvt*font:               CUSTOM
-! URxvt*boldFont:           CUSTOM
+URxvt.allow_bold:           false
+! URxvt.font:               CUSTOM
+! URxvt.boldFont:           CUSTOM
 
 ! Fix font space
-URxvt*letterSpace: -1
+URxvt.letterSpace: -1
 
 ! Scrollbar
-URxvt*scrollStyle:          rxvt
-URxvt*scrollBar:            false
+URxvt.scrollStyle:          rxvt
+URxvt.scrollBar:            false
 
 ! Perl extensions
-URxvt*perl-ext-common:      default,matcher,selection-to-clipboard
-URxvt*url-launcher:         /usr/bin/xdg-open
-URxvt*matcher.button:       1
+URxvt.perl-ext-common:      default,matcher,selection-to-clipboard
+URxvt.url-launcher:         /usr/bin/xdg-open
+URxvt.matcher.button:       1
 
 ! Cursor
-URxvt*cursorBlink:          false
-URxvt*cursorUnderline:      false
+URxvt.cursorBlink:          false
+URxvt.cursorUnderline:      false
 
 ! Pointer
-URxvt*pointerBlank:         true
+URxvt.pointerBlank:         true
 
 ! Solarized color scheme for the X Window System
 !
@@ -90,29 +91,29 @@ URxvt*pointerBlank:         true
 ! To only apply colors to your terminal, for example, prefix
 ! the color assignment statement with its name. Example:
 !
-! URxvt*background:            S_base03
+! URxvt.background:            S_base03
 
-URxvt*background:              S_base03
-URxvt*foreground:              S_base0
-URxvt*fading:                  40
-URxvt*fadeColor:               S_base03
-URxvt*cursorColor:             S_base1
-URxvt*pointerColorBackground:  S_base01
-URxvt*pointerColorForeground:  S_base1
+URxvt.background:              S_base03
+URxvt.foreground:              S_base0
+URxvt.fading:                  40
+URxvt.fadeColor:               S_base03
+URxvt.cursorColor:             S_base1
+URxvt.pointerColorBackground:  S_base01
+URxvt.pointerColorForeground:  S_base1
 
-URxvt*color0:                  S_base02
-URxvt*color1:                  S_red
-URxvt*color2:                  S_green
-URxvt*color3:                  S_yellow
-URxvt*color4:                  S_blue
-URxvt*color5:                  S_magenta
-URxvt*color6:                  S_cyan
-URxvt*color7:                  S_base2
-URxvt*color9:                  S_orange
-URxvt*color8:                  S_base03
-URxvt*color10:                 S_base01
-URxvt*color11:                 S_base00
-URxvt*color12:                 S_base0
-URxvt*color13:                 S_violet
-URxvt*color14:                 S_base1
-URxvt*color15:                 S_base3
+URxvt.color0:                  S_base02
+URxvt.color1:                  S_red
+URxvt.color2:                  S_green
+URxvt.color3:                  S_yellow
+URxvt.color4:                  S_blue
+URxvt.color5:                  S_magenta
+URxvt.color6:                  S_cyan
+URxvt.color7:                  S_base2
+URxvt.color9:                  S_orange
+URxvt.color8:                  S_base03
+URxvt.color10:                 S_base01
+URxvt.color11:                 S_base00
+URxvt.color12:                 S_base0
+URxvt.color13:                 S_violet
+URxvt.color14:                 S_base1
+URxvt.color15:                 S_base3

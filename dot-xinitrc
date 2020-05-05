@@ -1,1 +1,12 @@
-exec /usr/bin/startplasma-x11
+# KDE
+# exec /usr/bin/startplasma-x11
+
+if [ -f "$HOME/.Xresources" ]
+then
+    xrdb -merge -I"$HOME" "$HOME/.Xresources"
+fi
+
+export XCURSOR_SIZE=60
+
+# LXQT
+exec /usr/bin/startlxqt
