@@ -47,6 +47,7 @@ no label, UUID=6d98f068-e68a-4d03-a7eb-d0f141692c7a
 
 ```
 adobe-source-code-pro-fonts
+alsa-utils
 aura-bin
 autoconf
 awesome
@@ -56,12 +57,15 @@ chromium
 cifs-utils
 completion
 copyq
+ctags
+cups
 cups-pdf
 curl
 deadbeef
 dotnet
 dotnet-sdk
 fakeroot
+ffmpegthumbnailer
 flex
 fop
 gcc
@@ -71,6 +75,12 @@ go
 gvim
 htop
 jdk-openjdk
+jq
+lastpass-cli
+libheif
+libwmf
+libstatgrab
+libsysstat
 libwmf
 libxslt
 lxqt
@@ -90,6 +100,7 @@ oxygen-icons
 patch
 pavucontrol-qt
 pcmanfm-qt
+python-pipenv
 rand
 reflector
 rsync
@@ -124,6 +135,7 @@ xscreensaver
 xsltproc
 xterm
 ytt
+zoom
 ```
 
 
