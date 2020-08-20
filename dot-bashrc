@@ -23,6 +23,12 @@ then
     export PATH="$PATH:$REBAR3_BIN"
 fi
 
+declare -r DOTNET_TOOLS_BIN="$HOME/.dotnet/tools"
+if [[ -d $DOTNET_TOOLS_BIN ]]
+then
+    export PATH="$PATH:$DOTNET_TOOLS_BIN"
+fi
+
 declare -r RBENV_ROOT="$HOME/.rbenv"
 if [[ -d "$RBENV_ROOT/bin" ]]
 then
