@@ -5,7 +5,7 @@ HOME_BIN := $(HOMEDIR)/bin
 
 .PHONY: all osx
 
-all: misc vimdir vimrc gvimrc vim-erlang-tags bash kerl keychain tmux git xorg gemrc abcde pulse
+all: misc vimdir vimrc gvimrc vim-erlang-tags bash kerl keychain tmux git xorg gemrc abcde pulse fontconfig
 osx: misc vimdir vimrc gvimrc vim-erlang-tags bash kerl keychain tmux git gemrc
 
 misc_clean:
@@ -58,6 +58,9 @@ abcde_clean:
 
 pulse_clean:
 	@rm -vf $(HOMEDIR)/.config/pulse/default.pa
+
+fontconfig_clean:
+	@rm -vf $(HOMEDIR)/.config/fontconfig/conf.d/01-lbakken.conf
 
 .PHONY: clean misc_clean vim_clean bash_clean kerl_clean keychain_clean tmux_clean git_clean xorg_clean gemrc_clean abcde_clean pulse_clean
 clean: misc_clean vim_clean bash_clean kerl_clean keychain_clean tmux_clean git_clean xorg_clean gemrc_clean abcde_clean pulse_clean
@@ -166,3 +169,11 @@ $(HOMEDIR)/.config/pulse:
 $(HOMEDIR)/.config/pulse/default.pa: $(HOMEDIR)/.config/pulse
 	[ -f "$(PROJDIR)/dot-config/pulse/default.pa-$(HOSTNAME)" ] && \
 		ln -vsf $(PROJDIR)/dot-config/pulse/default.pa-$(HOSTNAME) $(HOMEDIR)/.config/pulse/default.pa || echo 'No default.pa for $(HOSTNAME)'
+
+# TODO: maybe run `fc-cache -rf`
+fontconfig: $(HOMEDIR)/.config/fontconfig/conf.d/01-lbakken.conf
+$(HOMEDIR)/.config/fontconfig/conf.d:
+	mkdir -p $(HOMEDIR)/.config/fontconfig/conf.d
+$(HOMEDIR)/.config/fontconfig/conf.d/01-lbakken.conf: $(HOMEDIR)/.config/fontconfig/conf.d
+	[ -f "$(PROJDIR)/dot-config/fontconfig/01-lbakken.conf" ] && \
+		ln -vsf $(PROJDIR)/dot-config/fontconfig/01-lbakken.conf $(HOMEDIR)/.config/fontconfig/conf.d/01-lbakken.conf
