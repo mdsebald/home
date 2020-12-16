@@ -10,3 +10,4 @@ export XCURSOR_SIZE=60
 
 # LXQT
 exec /usr/bin/startlxqt
+# exec /usr/bin/xterm
