@@ -73,6 +73,7 @@ export GPG_TTY="$(tty)"
 # If not running interactively, don't do anything past this point
 [[ $- != *i* ]] && return
 
+export EDITOR=vim
 export HISTCONTROL=ignoreboth
 export HISTSIZE=131072
 export HISTFILESIZE=131072
