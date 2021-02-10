@@ -1,3 +1,5 @@
+# vim:ft=bash:
+# shellcheck disable=SC1090,SC1091,SC2155 shell=bash
 #
 # $HOME/.bashrc
 #
@@ -47,7 +49,7 @@ fi
 
 if [[ -d $HOME/perl5 ]]
 then
-    eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"
+    eval "$(perl -I"$HOME/perl5/lib/perl5" -Mlocal::lib)"
 fi
 
 declare -r KIEX="$HOME/.kiex/scripts/kiex"
@@ -101,56 +103,62 @@ fi
 
 if [[ $MSYSTEM == 'MINGW64' ]]
 then
-    if (( SSH_AGENT_PID > 0 )) && ps -p $SSH_AGENT_PID >/dev/null
+    if (( SSH_AGENT_PID > 0 )) && ps -p "$SSH_AGENT_PID" >/dev/null
     then
-        declare -i tmp_ssh_agent_pid=0
+        declare -i _bashrc_tmp_ssh_agent_pid=0
         if [[ -s $ssh_agent_pid_file ]]
         then
-            tmp_ssh_agent_pid="$(< $ssh_agent_pid_file)"
+            _bashrc_tmp_ssh_agent_pid="$(< $ssh_agent_pid_file)"
         fi
-        if (( SSH_AGENT_PID != tmp_ssh_agent_pid ))
+        if (( SSH_AGENT_PID != _bashrc_tmp_ssh_agent_pid ))
         then
             mkdir -p /tmp/.ssh
-            echo $SSH_AGENT_PID > $ssh_agent_pid_file
-            echo $SSH_AUTH_SOCK > $ssh_auth_sock_file
+            echo "$SSH_AGENT_PID" > "$ssh_agent_pid_file"
+            echo "$SSH_AUTH_SOCK" > "$ssh_auth_sock_file"
         fi
     fi
 fi
+unset _bashrc_tmp_ssh_agent_pid
 
 if ! shopt -oq posix
 then
-  [[ -f /usr/share/bash-completion/bash_completion ]] && \
+  [[ -r /usr/share/bash-completion/bash_completion ]] && \
       source /usr/share/bash-completion/bash_completion
-  [[ -f /usr/local/share/bash-completion/bash_completion ]] && \
+  [[ -r /usr/local/share/bash-completion/bash_completion ]] && \
       source /usr/local/share/bash-completion/bash_completion
-  [[ -f /etc/bash_completion ]] && source /etc/bash_completion
+  [[ -r /etc/bash_completion ]] && \
+      source /etc/bash_completion
+  [[ -r /usr/local/etc/profile.d/bash_completion.sh ]] && \
+      source /usr/local/etc/profile.d/bash_completion.sh
 fi
 
-[[ -f $HOME/.bash_aliases ]] && source "$HOME/.bash_aliases"
+[[ -r $HOME/.bash_aliases ]] && source "$HOME/.bash_aliases"
 
 PS1='[\u@\h \W]\$ '
 
 if [[ $(type -t __git_ps1) != 'function' ]]
 then
-    git_cmpl=/usr/share/git/completion/git-completion.bash
-    [[ -f $git_cmpl  ]] && source $git_cmpl
-    git_cmpl=/usr/local/share/git-core/contrib/completion/git-completion.bash
-    [[ -f $git_cmpl  ]] && source $git_cmpl
-    git_cmpl=/etc/bash_completion.d/git
-    [[ -f $git_cmpl  ]] && source $git_cmpl
-    git_cmpl=/usr/local/etc/bash_completion.d/git-completion.bash
-    [[ -f $git_cmpl  ]] && source $git_cmpl
+    _bashrc_git_cmpl=/usr/share/git/completion/git-completion.bash
+    [[ -r $_bashrc_git_cmpl  ]] && source "$_bashrc_git_cmpl"
+    _bashrc_git_cmpl=/usr/local/share/git-core/contrib/completion/git-completion.bash
+    [[ -r $_bashrc_git_cmpl  ]] && source "$_bashrc_git_cmpl"
+    _bashrc_git_cmpl=/etc/bash_completion.d/git
+    [[ -r $_bashrc_git_cmpl  ]] && source "$_bashrc_git_cmpl"
+    _bashrc_git_cmpl=/usr/local/etc/bash_completion.d/git-completion.bash
+    [[ -r $_bashrc_git_cmpl  ]] && source "$_bashrc_git_cmpl"
+    unset _bashrc_git_cmpl
 
-    git_ps1=/usr/share/git/completion/git-prompt.sh
-    [[ -f $git_ps1  ]] && source $git_ps1
-    git_ps1=/usr/local/share/git-core/contrib/completion/git-prompt.sh
-    [[ -f $git_ps1  ]] && source $git_ps1
-    git_ps1="$HOME/.git-prompt.sh"
-    [[ -f $git_ps1  ]] && source $git_ps1
-    git_ps1=/etc/bash_completion.d/git-prompt
-    [[ -f $git_ps1  ]] && source $git_ps1
-    git_ps1=/usr/local/etc/bash_completion.d/git-prompt.sh
-    [[ -f $git_ps1  ]] && source $git_ps1
+    _bashrc_git_ps1=/usr/share/git/completion/git-prompt.sh
+    [[ -r $_bashrc_git_ps1  ]] && source "$_bashrc_git_ps1"
+    _bashrc_git_ps1=/usr/local/share/git-core/contrib/completion/git-prompt.sh
+    [[ -r $_bashrc_git_ps1  ]] && source "$_bashrc_git_ps1"
+    _bashrc_git_ps1="$HOME/.git-prompt.sh"
+    [[ -r $_bashrc_git_ps1  ]] && source "$_bashrc_git_ps1"
+    _bashrc_git_ps1=/etc/bash_completion.d/git-prompt
+    [[ -r $_bashrc_git_ps1  ]] && source "$_bashrc_git_ps1"
+    _bashrc_git_ps1=/usr/local/etc/bash_completion.d/git-prompt.sh
+    [[ -r $_bashrc_git_ps1  ]] && source "$_bashrc_git_ps1"
+    unset _bashrc_git_ps1
 fi
 
 if [[ $(type -t __git_ps1) == 'function' ]]
@@ -163,15 +171,17 @@ then
 $ '
 fi
 
-ppid_cmdline_f="/proc/$PPID/cmdline"
-if [[ -f $ppid_cmdline_f ]]
+_bashrc_ppid_cmdline_f="/proc/$PPID/cmdline"
+if [[ -f $_bashrc_ppid_cmdline_f ]]
 then
-    ppid_cmdline="$(tr -d '\0' < $ppid_cmdline_f)"
-    if [[ $ppid_cmdline == *qterminal* || $ppid_cmdline == *konsole* ]]
+    _bashrc_ppid_cmdline="$(tr -d '\0' < $_bashrc_ppid_cmdline_f)"
+    if [[ $_bashrc_ppid_cmdline == *qterminal* || $_bashrc_ppid_cmdline == *konsole* ]]
     then
         export TERM=xterm-256color
     fi
+    unset _bashrc_ppid_cmdline
 fi
+unset _bashrc_ppid_cmdline_f
 
 # declare -r rtrc="$HOME/.riak-test-rc"
 # if [[ -s $rtrc ]]
@@ -186,10 +196,4 @@ if hash direnv 2>/dev/null
 then
     # export DIRENV_LOG_FORMAT=
     eval "$(direnv hook bash)"
-fi
-
-if [[ -d "$HOME/.sdkman" ]] && [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]]
-then
-    export SDKMAN_DIR="$HOME/.sdkman"
-    source "$SDKMAN_DIR/bin/sdkman-init.sh"
 fi
