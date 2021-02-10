@@ -23,19 +23,17 @@ else
     #
     # NB: for post-crypto 4.0
     KERL_CONFIGURE_OPTIONS='--with-microstate-accounting=extra --enable-hipe --enable-smp-support --enable-threads --enable-kernel-poll'
+    KERL_BASE_DIR="$HOME/development/erlang"
+    KERL_DOWNLOAD_DIR="$HOME/development/erlang/archives"
+    KERL_BUILD_DIR="$HOME/development/erlang/builds"
+    KERL_GIT_DIR="$HOME/development/erlang/gits"
+    KERL_DEFAULT_INSTALL_DIR="$HOME/development/erlang/installs"
+    # NB: Arch Linux
+    # export XDG_CONFIG_HOME=/home/lbakken/repos/rmq
+    # pacman -S openssl-1.0
+    # cd /usr/lib/openssl-1.0 && ln -vsf /usr/lib/openssl-1.0 lib
+    # cd /usr/include/openssl-1.0 && ln -vsf /usr/include/openssl-1.0 include
+    #
+    #   --with-ssl=PATH         specify location of OpenSSL include and lib
+    #   --with-ssl-incl=PATH    location of OpenSSL include dir, if different than
 fi
-
-KERL_BASE_DIR="$HOME/development/erlang"
-KERL_DOWNLOAD_DIR="$HOME/development/erlang/archives"
-KERL_BUILD_DIR="$HOME/development/erlang/builds"
-KERL_GIT_DIR="$HOME/development/erlang/gits"
-KERL_DEFAULT_INSTALL_DIR="$HOME/development/erlang/installs"
-
-# NB: Arch Linux
-# export XDG_CONFIG_HOME=/home/lbakken/repos/rmq
-# pacman -S openssl-1.0
-# cd /usr/lib/openssl-1.0 && ln -vsf /usr/lib/openssl-1.0 lib
-# cd /usr/include/openssl-1.0 && ln -vsf /usr/include/openssl-1.0 include
-#
-#   --with-ssl=PATH         specify location of OpenSSL include and lib
-#   --with-ssl-incl=PATH    location of OpenSSL include dir, if different than

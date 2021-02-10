@@ -5,8 +5,8 @@ HOME_BIN := $(HOMEDIR)/bin
 
 .PHONY: all osx
 
-all: misc vimdir vimrc gvimrc vim-erlang-tags bash kerl keychain tmux git xorg gemrc abcde pulse fontconfig
-osx: misc vimdir vimrc gvimrc vim-erlang-tags bash kerl keychain tmux git gemrc
+all: misc vimdir vimrc gvimrc vim-erlang-tags bash keychain tmux git xorg gemrc abcde pulse fontconfig
+osx: misc vimdir vimrc gvimrc vim-erlang-tags bash keychain tmux git gemrc
 
 misc_clean:
 	@rm -vf $(HOME_BIN)/urlencode
