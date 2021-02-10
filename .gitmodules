@@ -19,3 +19,6 @@
 [submodule "dot-vim/pack/lbakken/start/vim-colors-solarized"]
 	path = dot-vim/pack/lbakken/start/vim-colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
+[submodule "dot-vim/pack/lbakken/start/vim-mix-format"]
+	path = dot-vim/pack/lbakken/start/vim-mix-format
+	url = https://github.com/mhinz/vim-mix-format.git
