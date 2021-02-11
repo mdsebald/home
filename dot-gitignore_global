@@ -43,3 +43,4 @@ Thumbs.db
 tags
 .vimrc
 .virtualenv
+.elixir_ls/

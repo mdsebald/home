@@ -1,6 +1,13 @@
 set nocompatible
 syntax on
 
+" Disable Dialyzer to save CPU time
+" Elixir LS path
+" let g:ale_elixir_elixir_ls_release = expand($HOME . "/development/lukebakken/home/elixir-ls/release")
+" let g:ale_elixir_elixir_ls_config = {'elixirLS': {'dialyzerEnabled': v:false}}
+" let g:ale_linters = {'elixir': ['elixir-ls']}
+" let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace'], 'elixir': ['mix_format']}
+
 filetype on
 filetype indent on
 filetype plugin on
@@ -129,3 +136,10 @@ autocmd FileType sql set tabstop=2
 autocmd FileType go set noexpandtab
 autocmd FileType go set shiftwidth=4
 autocmd FileType go set tabstop=4
+
+" Load all plugins now.
+" Plugins need to be added to runtimepath before helptags can be generated.
+packloadall
+" Load all of the helptags now, after plugins have been loaded.
+" All messages and errors will be ignored.
+silent! helptags ALL
