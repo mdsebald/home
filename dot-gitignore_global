@@ -44,3 +44,4 @@ tags
 .vimrc
 .virtualenv
 .elixir_ls/
+.envrc.custom
