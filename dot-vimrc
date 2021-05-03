@@ -1,11 +1,10 @@
 set nocompatible
 syntax on
 
-let g:ale_linters = {'elixir': ['elixir-ls']}
-let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace'], 'elixir': ['mix_format']}
-
 "ALE conf"
 set completeopt=menu,menuone,preview,noselect,noinsert
+" https://github.com/dense-analysis/ale/issues/2137#issuecomment-797468471
+" let g:ale_command_wrapper =  expand($HOME . "/bin/ale-command-wrapper")
 let g:ale_completion_enabled = 1
 
 let g:ale_linters = {}
