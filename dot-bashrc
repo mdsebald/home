@@ -96,6 +96,7 @@ export HISTCONTROL=ignoreboth
 export HISTSIZE=131072
 export HISTFILESIZE=131072
 export HISTFILE="$HOME/.bash_eternal_history"
+export ERL_AFLAGS='-kernel shell_history enabled'
 
 shopt -s histappend
 shopt -s checkwinsize

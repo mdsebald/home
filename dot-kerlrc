@@ -1,7 +1,6 @@
 #!/bin/sh
 # shellcheck disable=SC2034
 
-KERL_ENABLE_PROMPT=YES
 KERL_CONFIGURE_DISABLE_APPLICATIONS='odbc'
 
 readonly uname="$(uname)"
@@ -9,9 +8,10 @@ readonly uname="$(uname)"
 if [ "$uname" = 'Darwin' ]
 then
     # https://github.com/Homebrew/homebrew-core/blob/master/Formula/erlang.rb
-    KERL_CONFIGURE_OPTIONS="--disable-hipe --with-microstate-accounting=extra --enable-darwin-64bit --enable-dynamic-ssl-lib --enable-kernel-poll --enable-sctp --enable-shared-zlib --enable-smp-support --enable-threads --enable-wx --with-ssl=$(brew --prefix openssl) --without-docs"
-    export CFLAGS="-g -O3 -fstack-protector"
+    KERL_CONFIGURE_OPTIONS="--disable-hipe --disable-sctp --with-microstate-accounting=extra --enable-darwin-64bit --enable-dynamic-ssl-lib --enable-kernel-poll --enable-sctp --enable-shared-zlib --enable-smp-support --enable-threads --enable-wx --with-ssl=$(brew --prefix openssl) --without-docs"
+    export CFLAGS="-g -O2 -fstack-protector"
 else
+    KERL_ENABLE_PROMPT=YES
     # NB: to remove odbc
     # KERL_CONFIGURE_DISABLE_APPLICATIONS='odbc'
 
