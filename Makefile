@@ -5,8 +5,8 @@ HOME_BIN := $(HOMEDIR)/bin
 
 .PHONY: all osx
 
-all: misc vimdir vimrc gvimrc vim-erlang-tags bash keychain tmux git xorg gemrc abcde pulse fontconfig
-osx: misc vimdir vimrc gvimrc vim-erlang-tags bash keychain tmux git gemrc
+all: misc vimdir vimrc gvimrc vim-erlang-tags bash keychain tmux git xorg gemrc abcde pulse fontconfig asdf
+osx: misc vimdir vimrc gvimrc vim-erlang-tags bash keychain tmux git gemrc asdf
 
 misc_clean:
 	@rm -vf $(HOME_BIN)/urlencode
@@ -29,6 +29,9 @@ bash_clean:
 kerl_clean:
 	@rm -vf $(HOME_BIN)/kerl
 	@rm -vf $(HOMEDIR)/.kerlrc
+
+asdf_clean:
+	@rm -vf $(HOMEDIR)/.asdf
 
 keychain_clean:
 	@rm -vf $(HOME_BIN)/keychain
@@ -62,8 +65,8 @@ pulse_clean:
 fontconfig_clean:
 	@rm -vf $(HOMEDIR)/.config/fontconfig/conf.d/01-lbakken.conf
 
-.PHONY: clean misc_clean vim_clean bash_clean kerl_clean keychain_clean tmux_clean git_clean xorg_clean gemrc_clean abcde_clean pulse_clean
-clean: misc_clean vim_clean bash_clean kerl_clean keychain_clean tmux_clean git_clean xorg_clean gemrc_clean abcde_clean pulse_clean
+.PHONY: clean misc_clean vim_clean bash_clean kerl_clean keychain_clean tmux_clean git_clean xorg_clean gemrc_clean abcde_clean pulse_clean asdf_clean
+clean: misc_clean vim_clean bash_clean kerl_clean keychain_clean tmux_clean git_clean xorg_clean gemrc_clean abcde_clean pulse_clean asdf_clean
 
 $(HOME_BIN):
 	mkdir -vp $(HOME_BIN)
@@ -119,6 +122,15 @@ $(HOME_BIN)/kerl: $(HOME_BIN)
 	ln -vsf $(PROJDIR)/kerl/kerl $(HOME_BIN)/kerl
 $(HOMEDIR)/.kerlrc:
 	ln -vsf $(PROJDIR)/dot-kerlrc $(HOMEDIR)/.kerlrc
+
+asdf: $(HOMEDIR)/.asdf/asdf.sh $(HOMEDIR)/.asdf/plugins/erlang/kerl-home/.kerlrc
+$(HOMEDIR)/.asdf/asdf.sh:
+	git submodule update --init
+	ln -vsf $(PROJDIR)/asdf $(HOMEDIR)/.asdf
+	$(PROJDIR)/bin/asdf-init.sh
+$(HOMEDIR)/.asdf/plugins/erlang/kerl-home/.kerlrc:
+	mkdir -p $(HOMEDIR)/.asdf/plugins/erlang/kerl-home
+	ln -vsf $(PROJDIR)/dot-kerlrc $(HOMEDIR)/.asdf/plugins/erlang/kerl-home/.kerlrc
 
 keychain: $(HOME_BIN)/keychain
 $(HOME_BIN)/keychain: $(HOME_BIN)

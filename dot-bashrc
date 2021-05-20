@@ -3,6 +3,14 @@
 #
 # $HOME/.bashrc
 #
+_bashrc_asdf_home="$HOME/.asdf"
+_bashrc_asdf_sh="$_bashrc_asdf_home/asdf.sh"
+if [[ -s "$_bashrc_asdf_sh" ]]
+then
+    source "$_bashrc_asdf_sh"
+fi
+unset _bashrc_asdf_sh
+
 if [[ -d "$HOME/bin" ]] && [[ ! :$PATH: == *":$HOME/bin:"* ]]
 then
     export PATH="$HOME/bin:$PATH"
@@ -147,7 +155,14 @@ then
       source /etc/bash_completion
   [[ -r /usr/local/etc/profile.d/bash_completion.sh ]] && \
       source /usr/local/etc/profile.d/bash_completion.sh
+
+  _bashrc_asdf_completions="$_bashrc_asdf_home/completions/asdf.bash"
+  [[ -r "$_bashrc_asdf_completions" ]] && \
+      source "$_bashrc_asdf_completions"
+  unset _bashrc_asdf_completions
 fi
+
+unset _bashrc_asdf_home
 
 [[ -r $HOME/.bash_aliases ]] && source "$HOME/.bash_aliases"
 
