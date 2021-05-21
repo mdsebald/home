@@ -15,7 +15,7 @@ then
     export CC=clang
     export CPP='clang -E'
 else
-    KERL_ENABLE_PROMPT=YES
+    # KERL_ENABLE_PROMPT=YES
     # NB: to remove odbc
     # KERL_CONFIGURE_DISABLE_APPLICATIONS='odbc'
 
@@ -27,11 +27,6 @@ else
     #
     # NB: for post-crypto 4.0
     KERL_CONFIGURE_OPTIONS='--with-microstate-accounting=extra --enable-hipe --enable-smp-support --enable-threads --enable-kernel-poll'
-    KERL_BASE_DIR="$HOME/development/erlang"
-    KERL_DOWNLOAD_DIR="$HOME/development/erlang/archives"
-    KERL_BUILD_DIR="$HOME/development/erlang/builds"
-    KERL_GIT_DIR="$HOME/development/erlang/gits"
-    KERL_DEFAULT_INSTALL_DIR="$HOME/development/erlang/installs"
     # NB: Arch Linux
     # export XDG_CONFIG_HOME=/home/lbakken/repos/rmq
     # pacman -S openssl-1.0
