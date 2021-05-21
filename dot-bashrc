@@ -60,12 +60,6 @@ then
     eval "$(perl -I"$HOME/perl5/lib/perl5" -Mlocal::lib)"
 fi
 
-declare -r KIEX="$HOME/.kiex/scripts/kiex"
-if [[ -s $KIEX ]]
-then
-    source "$KIEX"
-fi
-
 if [[ -s /usr/local/etc/xml/catalog ]]
 then
     export XML_CATALOG_FILES='/usr/local/etc/xml/catalog'
