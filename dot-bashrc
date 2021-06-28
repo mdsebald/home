@@ -104,18 +104,15 @@ then
     fi
 fi
 
-if hash keychain 2>/dev/null
+if gpg-connect-agent --quiet /bye > /dev/null 2>&1
 then
-    eval "$(keychain --eval --agents ssh id_rsa)"
+    gpg-connect-agent --quiet updatestartuptty /bye 1> /dev/null
+else
+    if hash keychain 2>/dev/null
+    then
+        eval "$(keychain --eval --agents ssh id_rsa)"
+    fi
 fi
-
-case "$OSTYPE" in
-    linux*)
-        if hash gpg-agent 2>/dev/null
-        then
-            gpg-agent --daemon
-        fi;;
-esac
 
 if [[ $MSYSTEM == 'MINGW64' ]]
 then
