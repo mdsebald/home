@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+readonly executable="$1"
+readonly outputfile="${executable////-}"  # strip out /es if executable is full path
+
+tee "$HOME/tmp/$outputfile.in" | "$@" 2> "$HOME/tmp/$outputfile.err" | tee "$HOME/tmp/$outputfile.out"
